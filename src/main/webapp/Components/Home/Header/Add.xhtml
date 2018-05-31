@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:tab title="Add">
+            <h:form id="add" class="headBloc">
+                <h:outputLabel>Add: </h:outputLabel>
+                <p:inputText id="user" value="#{addFace.texto}" placeholder="texto"/>
+
+                <p:outputLabel for="departament" value="Departamento: " />
+                <p:selectOneMenu id="departament" value="#{addFace.departament}" style="width:125px">
+                    <f:selectItem itemLabel="Movil" itemValue="Movil" />
+                    <f:selectItem itemLabel="Web" itemValue="Web" />
+                    <f:selectItem itemLabel="Administracion" itemValue="Administracion" />
+                    <f:selectItem itemLabel="Marketing" itemValue="Marketing" />
+                </p:selectOneMenu>
+
+                <p:outputLabel for="state" value="State " />
+                <p:selectOneMenu id="state" value="#{addFace.state}" style="width:125px">
+                    <f:selectItem itemLabel="Asignada" itemValue="1" />
+                    <f:selectItem itemLabel="Proceso" itemValue="2" />
+                    <f:selectItem itemLabel="Finalizada" itemValue="3" />
+                </p:selectOneMenu>
+
+                <p:outputLabel for="datein" value="Date in:" />
+                <p:calendar id="datein" value="#{addFace.calendarIn}" pattern="MM/dd/yyyy HH:mm:ss" />
+                <p:outputLabel for="dateout" value="Date out:" />
+                <p:calendar id="dateout" value="#{addFace.calendarOut}" pattern="MM/dd/yyyy HH:mm:ss" />
+
+                <h:commandButton id="insert" value="Insert" action="#{addFace.addElement}">
+                    <f:ajax execute="add" render=":form:homeTable" resetValues="true"></f:ajax>
+                    <f:setPropertyActionListener target="#{addFace.uid}" value="#{userId}" />
+                    <f:setPropertyActionListener target="#{addFace.username}" value="#{user}" />
+                </h:commandButton>
+            </h:form>
+        </p:tab>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,485 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03-may-2018, 20:02:01
+    Author     : vghaya
+*/
+
+.stateButtn{
+    width:100%;
+    height:40px;
+    border:none !important;
+    box-shadow: none !important;
+    border-radius:0 !important;
+    padding:0 !important;
+    margin:0 !important;
+    background-color:transparent !important;
+}
+
+.overLPanel{
+    margin-left: -5px !important;padding:0px !important;margin:0px !important;border:none !important;
+}
+
+.stateButton{
+    width: 50px !important;
+    height: 50px !important;
+    padding:0 !important;
+    margin:0 !important;
+    border:none !important;
+}
+
+.ui-dialog-footer{
+    background-color: white !important;
+}
+/*BOTONES*/
+
+
+.ui-button-icon-only{
+    box-shadow: none !important;
+    width: 38px !important;
+    border-radius: 40px !important;
+}
+
+
+
+
+.ui-button-text-icon-left{
+    box-shadow:none !important;
+    background: none !important;
+}
+.headBloc {
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    justify-content: space-around;
+}
+
+.ui-widget-content{
+    border: none !important;
+}
+
+.ui-widget-content{
+}
+
+.ui-state-default .ui-widget-header{
+    text-shadow: none;
+    font-style: inherit;
+    border: none;
+}
+
+.ui-accordion-header{
+    background: none #DA8C62;
+}
+
+.ui-accordion {
+    color: white;
+    font-style: inherit !important;
+    border: none !important;
+    font-stretch: normal;
+
+}
+.ui-layout-unit-header{
+    padding:3px !important;
+    background:none transparent !important;
+}
+
+
+.assigned {
+    background-color: #77C6C8 !important;  
+}
+
+.process {
+    background-color: #C8C377 !important;
+}
+
+.completed {
+    background-color: #8BB493 !important;
+}
+
+.outoftime {
+    background-color: #E16C4D !important;
+}
+
+.btnDefault{
+    height:25px !important;
+    font-size:15px !important;
+    background-size: 16px !important;
+}
+
+
+
+
+.ui-selectonemenu-label{
+    background: none white !important;
+    border-style: none;
+    color:black !important;
+    box-shadow: none !important;
+    font-style: inherit;
+    border: none;
+}
+/*SELECTMENU LISTITEM*/
+.ui-selectonemenu-list-item{
+    background: none white !important;
+    border-style: none;
+    color:black !important;
+    box-shadow: none !important;
+    font-style: inherit;
+    border: none;
+}
+
+.ui-widget-header{
+    border:none;
+}
+
+/*HEADER TABLE*/
+.ui-datatable thead th{
+    background: none #A4BBC2 !important;
+    color:#383939 !important;
+    text-shadow: none !important;
+    font-weight: inherit !important;
+    font-size:15px;
+    border:none !important;
+}
+
+
+
+/*SELECTMENU SELECTED*/
+.ui-state-highlight{
+    font-weight: inherit !important;
+    font-style: inherit !important;
+    text-shadow: none !important;
+    background: none #BBDAE1 !important;
+    color:black !important;
+
+}
+/*SELECTMENU*/
+.ui-selectonemenu-panel {
+    background: none white !important;
+    
+    border-style: none;
+    border: 1px solid grey !important;
+    box-shadow: none !important;
+}
+
+.ui-datepicker-header{
+    background: none #706F6C !important;
+    color:white !important;
+    border-style: none;
+    border: 1px solid grey !important;
+    box-shadow: none !important; 
+}
+
+input[type=text]{
+    border-style: none;
+    border: 1px solid grey !important;
+    border-radius:0 !important;
+    box-shadow: none !important;
+    padding: 7px;
+    height:8px;
+    border-top:none !important;
+    border-right:none !important;
+    border-left:none !important;
+}
+
+input[type=submit]{
+    box-shadow: none !important;
+    background:none #D5D8D9 !important;
+    color: #45575C !important;
+    font-weight:100 !important;
+    font-size: .8em;
+    border:1px solid grey;
+    padding-top: 5px !important;
+    height:28px !important;
+    /*border: 1px solid black;*/
+    padding: 10px;
+    border-radius: 4px;
+}
+
+input[type=submit]:hover{
+    box-shadow: none !important;
+    background:none #A4BBC2 !important;
+    color: #45575C !important;
+    font-weight:100 !important;
+    font-size: .8em;
+    border:1px solid grey;
+    padding-top: 5px !important;
+    height:28px !important;
+    /*border: 1px solid black;*/
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#calendar{
+    background-color: red;
+}
+
+.editpanel{
+    width: 95%;
+    overflow: hidden;
+    white-space: nowrap;
+    white-space: initial;
+    font-weight:100;
+    text-decoration: none;
+    text-transform: none;
+
+
+}
+
+
+
+
+.ui-button{
+    background:none #D5D8D9 !important;
+    margin-left: 2px;
+    color: #45575C !important;
+    text-shadow:none !important;
+    font-weight:100 !important;
+    font-size:15px !important;
+    
+}
+
+
+/*HEADER ACtions*/
+.ui-datatable-header{
+    background: none #EEEBE2 !important;
+}
+
+
+.ui-messages-info, .ui-messages-warn, .ui-messages-error, .ui-messages-fatal {
+    background-color: red !important;
+}
+/*ACORDEON DEFAULT*/
+.ui-accordion-header {
+    background: none #5B5A59 !important;
+    color:white !important;
+    display:flex;
+    align-items: center;
+    height: 15px !important;
+    text-shadow:none !important;
+    border:none !important;
+    font-weight:100 !important;
+    font-family:  sans-serif;
+    letter-spacing: 3px;
+}
+
+/*ACORDEON ACTIVO
+.ui-widget-header .ui-state-active{
+    color: white !important;
+    text-shadow:none !important;
+    font-weight:100;
+    text-decoration: none;
+    background: none #C68570 !important;
+    border:none !important;
+    font-family:  sans-serif;
+    letter-spacing: 3px;
+}*/
+/* ACTIVO ROJO BOTONES Y ACORDEON HEADER ACTIVO*/
+.ui-state-active{
+/*color:white !important;
+background: none #C68570 !important;*/
+}
+.ui-button-text-icon-left{
+    text-shadow:none !important;
+    font-weight:inherit;
+    text-decoration: none;
+}
+
+.ui-datatable tbody td{
+    border-color:#E6E9EA !important;
+}
+
+.ui-panel .ui-panel-titlebar {
+    background: none darkgoldenrod;
+    border: none;
+    font-weight:100;
+    text-decoration: none;
+    text-transform: none;
+}
+
+.ui-helper-clearfix {
+    background: none black;
+    border: none;
+    color: white;
+    font-weight:100;
+    text-decoration: none;
+    text-transform: none;
+}
+
+.ui-widget-header .ui-widget{
+    text-decoration: none;
+    text-transform: none;
+    font-family: inherit;
+}
+
+.ui-datatable tr.ui-datatable-even:hover, .ui-datatable tr.ui-datatable-odd:hover {
+    background: #BBDAE1;
+}
+
+/*
+.ui-widget-header{
+    background-color: gray;
+}
+*/
+
+.ui-datepicker-calendar{
+    background-color: white !important;
+    font-weight:100;
+    text-decoration: none;
+    text-transform: none;
+    color: black;
+    border: none;
+    border-radius: 0;
+}
+
+
+/* MESSAGES*/
+
+.ui-growl-item-container{
+    
+    background-color: #EFF6F6 !important;
+    box-shadow: none !important;
+    border:none !important;
+    border-right:8px solid #4A4D4D !important;
+    
+}
+
+.ui-growl-title{
+    font-size:14px !important;
+    margin-bottom: -2%;
+}
+
+.ui-growl-message{
+    color: #4E4F4F !important;
+    font-size:18px !important;
+    margin-left: 65px !important;
+    margin-top: 2%;
+    width: 200px !important;
+    
+}
+
+.ui-growl-item-container {
+   background-image: url('./images/remove.png') !important;
+   background-repeat: no-repeat !important;
+   background-size: 40px !important;
+   background-position-x: 6% !important;
+   background-position-y: 13px !important;
+}
+
+.ui-growl-image{
+    display:none !important;
+}
+
+.ui-growl-item{
+    padding-left:40px !important;
+}
+
+.ui-button-text-icon-left{
+    
+}
+
+.ui-overlaypanel-content{
+  padding:2px !important;
+  
+}
+
+
+.ui-accordion .ui-accordion-header .ui-icon {
+    background-color: white !important;
+}
+
+
+
+
+ .ui-icon-myCancel{
+    background-image: url("materials/calendar.png") !important;
+    background-size: 17px;
+    border-radius: 0 !important;
+    
+    
+}
+
+
+ .ui-icon-Edit{
+    background-image: url("materials/pen.png") !important;
+    background-size: 17px;
+    border-radius: 0 !important;
+    
+    
+}
+
+ .ui-icon-Remove{
+    background-image: url("materials/remove.png") !important;
+    background-size: 17px;
+    border-radius: 0 !important;
+    
+    
+}
+
+ .ui-icon-Details{
+    background-image: url("materials/details.png") !important;
+    background-size: 17px;
+    border-radius: 0 !important;
+    
+    
+}
+
+
+ .ui-icon-Trash{
+    background-image: url("materials/trash.png") !important;
+    background-size: 17px;
+    border-radius: 0 !important;
+    
+    
+}
+
+.btnIconSty{
+    font-size: 20px !important; 
+}
+
+
+
+
+
+
+.header{
+}
+
+/* Page content */
+.content {
+  padding: 16px !important;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: fixed !important;
+  top: 0 !important;
+  width: 100%  !important;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 102px  !important;
+  
+}
+
+.pagTab thead {
+    display:none;
+}
+
+
+
+.ui-accordion .ui-icon.ui-icon-triangle-1-e {
+    background:none !important;
+}
+.ui-accordion .ui-icon.ui-icon-triangle-1-s {
+    background-position: -48px -128px;
+    background-color: transparent !important;
+    color:white !important
+}
+
+
+
+

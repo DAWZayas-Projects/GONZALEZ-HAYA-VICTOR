@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:commandButton icon="ui-icon-Details" class="btnIconSty" update=":form:myDialog" oncomplete="PF('dlg1').show();">
+            <f:setPropertyActionListener target="#{homeFace.ediElement}" value="#{item}"/>
+        </p:commandButton>
+
+        <p:commandButton  icon="ui-icon-Edit"  class="btnIconSty" type="button"/>
+
+        <p:commandButton icon="ui-icon-Remove" actionListener="#{homeFace.deleteSingle(item.pid)}" style="background-color:" class="btnIconSty" update=":form:message,:form:homeTable">
+            <p:confirm header="Confirmar eliminación" message="Estas seguro de eliminar esta tarea?" icon="ui-icon-alert" />
+        </p:commandButton>
+    </ui:composition>
+</html>

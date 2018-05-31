@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:composition>
+        <p:tab title="Search">
+            <h:form id="textsearch" class="headBloc">
+                
+                <p:inputText id="searchinp" value="#{homeFace.textFilter}" placeholder="búsqueda.." />
+                
+                <p:selectOneMenu id="textfilter" value="#{homeFace.textFilterType}" style="border:none !important;height:25px !important;font-size:15px !important;padding-bottom: 3px;">
+                    <f:selectItem itemLabel="User name" itemValue="userName" />
+                    <f:selectItem itemLabel="Description" itemValue="description" />
+                    <f:selectItem itemLabel="Departament" itemValue="departament" />
+                </p:selectOneMenu>
+
+                <p:calendar id="startcalendar" value="#{homeFace.searchStart}" placeholder="start" class="btnDefault" showOn="button" size="8"/>
+
+                <p:calendar id="expirecalendar" value="#{homeFace.searchEnd}" placeholder="expire" class="btnDefault" showOn="button" size="8"/>
+
+
+                <p:commandButton type="submit" value="Search" update=":form:homeTable">
+                    <f:setPropertyActionListener target="#{homeFace.filtered}" value="true" />
+                </p:commandButton>
+
+                <p:commandButton value="Reset" style="margin-right:20px;" action="#{homeFace.resetAddForm()}" update="textsearch" >
+                </p:commandButton>
+            </h:form>
+        </p:tab>
+    </ui:composition>
+</html>

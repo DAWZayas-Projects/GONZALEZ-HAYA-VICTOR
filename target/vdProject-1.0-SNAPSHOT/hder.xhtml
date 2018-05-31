@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html">
+
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Home Page</title>
+            </f:facet>
+            <meta name="viewport" content="width=device-width"/>
+            <h:outputStylesheet library="css" name="home.css"  />
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
+
+        </h:head>
+        <h:body>
+            
+                <h:form>
+                    <p:growl id="msgs" showDetail="true" />
+                    <p:autoComplete id="themes"
+                                    value="#{autoCompleteView.selectedThemes}"
+                                    completeMethod="#{autoCompleteView.completeTheme}"
+                                    var="theme" 
+                                    itemLabel="#{theme.displayName}" 
+                                    itemValue="#{theme}"
+                                    converter="themeConverter"
+                                    forceSelection="true">
+                        <p:column style="width:10%">
+                            <h:graphicImage library="images" name="#{theme.id}.png" style="width:30px;"/>
+                        </p:column>
+
+                        <p:column>
+                            <h:outputText value="#{theme.displayName}" />
+                        </p:column>
+                    </p:autoComplete>
+                    <p:commandButton value="Submit" icon="ui-icon-check" update="output msgs" oncomplete="PF('dlg').show()" />
+                    <p:dialog header="Values" resizable="false" showEffect="fade" widgetVar="dlg">
+                        <p:panelGrid id="output" columns="2" columnClasses="label, value">
+
+                            <h:outputText value="Multiple:" />
+                            <h:outputText value="#{autoCompleteView.selectedThemes}" />
+
+                        </p:panelGrid>
+                    </p:dialog>
+
+                    
+                    #{prop.search}
+                    #{prop.hola}
+                    #{prop['hola.senior']}
+                    
+                   
+
+                </h:form>
+            
+        </h:body>
+    </f:view>
+</html>

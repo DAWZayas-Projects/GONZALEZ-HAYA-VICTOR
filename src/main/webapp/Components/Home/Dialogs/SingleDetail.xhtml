@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+        <ui:composition>
+            <!-- "{homeFace.ediElement ne null}"-->
+            <p:dialog id="myDialog" header="Details" widgetVar="dlg1" width="600" height="540" closeOnEscape="true">
+                
+            <div style="width: 100;display:flex;flex-flow: row wrap; justify-content: space-around;">
+                <p:panel id="nme" header="Name" style="width: 45%; margin-bottom: 3%;" class="editpanel">
+                    <h:outputText value="#{homeFace.ediElement.userName}" />
+                </p:panel>
+
+                <p:panel id="dep" header="Departament" style="width: 45%; margin-bottom: 3%;" class="editpanel">
+                    <h:outputText value="#{homeFace.ediElement.departament}" />
+                </p:panel>
+
+                <p:panel id="desc" header="Description" class="editpanel" style="margin-bottom: 3%;">
+                    <h:outputText value="#{homeFace.ediElement.text}" />
+                </p:panel>
+
+                <p:panel id="startdate" header="Start date" style="width: 30%; margin-bottom: 3%;" class="editpanel">
+                    <h:outputText value="#{homeFace.ediElement.dateIn}" />
+                </p:panel>
+
+                <p:panel id="spiredate" header="Spire date" style="width: 30%; margin-bottom: 3%;" class="editpanel">
+                    <h:outputText value="#{homeFace.ediElement.dateOut}" />
+                </p:panel>
+
+                <p:panel id="expire" header="Expire" style="width: 30%; margin-bottom: 3%;" class="editpanel">
+                    <h:outputText value="#{homeFace.ediElement.days}" />
+                </p:panel>
+                
+                <p:panel id="state" header="State" style="width: 45%;margin-bottom: 3%;" class="editpanel">
+                    <h:outputText value="#{homeFace.ediElement.userName}" />
+                </p:panel>
+
+                <p:panel id="finance" header="Departament" style="width: 45%;margin-bottom: 3%;" class="editpanel">
+                    <h:outputText value="#{homeFace.ediElement.departament}" />
+                </p:panel>
+
+                
+                <p:commandButton value="Editar" />
+                <p:commandButton value="Perfil de @user" />
+                <p:commandButton value="Cerrar" onclick="PF('dlg1').hide();"/>
+
+
+            </div>
+            <div style="clear:both" />
+        </p:dialog>
+        </ui:composition>
+</html>

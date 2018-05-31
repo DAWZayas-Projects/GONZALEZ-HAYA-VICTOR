@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <h:form id="dialog">
+            <p:dialog header="Tareas seleccionadas" widgetVar="multiCarDialog" closeOnEscape="true" modal="true" showEffect="fade" hideEffect="fade" resizable="false" maximizable="true" height="300" width="600">
+                <p:outputPanel id="multiCarDetail">
+
+                    <p:dataTable value="#{homeFace.selectedElements}" var="io" scrollable="true">
+                        <p:column headerText="departament" width="80">
+                            <h:outputText value="#{io.departament}"/>
+                        </p:column>
+                        <p:column headerText="username" width="80">
+                            <h:outputText value="#{io.userName}"/>
+                        </p:column>
+                        <p:column headerText="start date" width="80">
+                            <h:outputText value="#{io.dateIn}"/>
+                        </p:column>
+                        <p:column headerText="end date" width="80">
+                            <h:outputText value="#{io.dateOut}"/>
+                        </p:column>
+
+                    </p:dataTable>
+
+                </p:outputPanel>
+                <h:commandButton value="Confirmar eliminacion" onclick="PF('multiCarDialog').hide();">
+                    <f:ajax render=":form:homeTable"></f:ajax>
+                    <f:setPropertyActionListener target="#{homeFace.deleteMany}" value="true" />
+                </h:commandButton>
+            </p:dialog>
+        </h:form>
+    </ui:composition>
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:composition>
+        <p:layoutUnit position="center">
+            
+            <ui:include src="Header.xhtml" />
+
+            <h:form id="form">
+                <p:dataTable id="homeTable" value="#{homeFace.homeList}" 
+                             var="item" 
+                             reflow="true" 
+                             resizableColumns="true" 
+                             selection="#{homeFace.selectedElements}" 
+                             rowKey="#{item.pid}"
+                             style="margin-bottom:0">
+
+                    <p:ajax event="rowSelectCheckbox" update="#{prop.updateManyBtns}" />
+                    <p:ajax event="rowUnselectCheckbox" update="#{prop.updateManyBtns}"  />
+                    <p:ajax event="rowSelect" update="#{prop.updateManyBtns}"  />
+                    <p:ajax event="toggleSelect" update="#{prop.updateManyBtns}"  />
+
+                    <ui:include src="Table/TableColumns.xhtml" />
+                    <ui:include src="Table/TableHead.xhtml" />
+                </p:dataTable>
+
+                <ui:include src="Dialogs/SingleDetail.xhtml" />
+                <ui:include src="Dialogs/ConfirmDialog.xhtml" />
+                <p:growl id="message" showDetail="true" />
+                
+            </h:form>
+        </p:layoutUnit>
+    </ui:composition>
+</html>
