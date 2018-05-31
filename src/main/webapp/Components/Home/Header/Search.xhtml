@@ -11,8 +11,8 @@
         <p:tab title="Search">
             <h:form id="textsearch" class="headBloc">
                 
-                <p:inputText id="searchinp" value="#{homeFace.textFilter}" placeholder="búsqueda.." />
-                
+                <p:inputText id="searchinp" maxlength="30" value="#{homeFace.textFilter}" placeholder="búsqueda.." />
+                <p:keyFilter for="searchinp" mask="alphanum" /> 
                 <p:selectOneMenu id="textfilter" value="#{homeFace.textFilterType}" style="border:none !important;height:25px !important;font-size:15px !important;padding-bottom: 3px;">
                     <f:selectItem itemLabel="User name" itemValue="userName" />
                     <f:selectItem itemLabel="Description" itemValue="description" />
@@ -24,7 +24,7 @@
                 <p:calendar id="expirecalendar" value="#{homeFace.searchEnd}" placeholder="expire" class="btnDefault" showOn="button" size="8"/>
 
 
-                <p:commandButton type="submit" value="Search" update=":form:homeTable">
+                <p:commandButton type="submit" value="Search" update="#{prop.updateTable}">
                     <f:setPropertyActionListener target="#{homeFace.filtered}" value="true" />
                 </p:commandButton>
 

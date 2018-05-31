@@ -14,7 +14,7 @@
 
         <p:commandButton  icon="ui-icon-Edit"  class="btnIconSty" type="button"/>
 
-        <p:commandButton icon="ui-icon-Remove" actionListener="#{homeFace.deleteSingle(item.pid)}" style="background-color:" class="btnIconSty" update=":form:message,:form:homeTable">
+        <p:commandButton icon="ui-icon-Remove" actionListener="#{homeFace.deleteSingle(item.pid)}" style="background-color:" class="btnIconSty" update=":form:message,#{prop.updateTable}">
             <p:confirm header="Confirmar eliminación" message="Estas seguro de eliminar esta tarea?" icon="ui-icon-alert" />
         </p:commandButton>
     </ui:composition>

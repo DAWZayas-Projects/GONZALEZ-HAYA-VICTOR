@@ -29,7 +29,7 @@
 
                 </p:outputPanel>
                 <h:commandButton value="Confirmar eliminacion" onclick="PF('multiCarDialog').hide();">
-                    <f:ajax render=":form:homeTable"></f:ajax>
+                    <f:ajax render="#{prop.updateTable}"></f:ajax>
                     <f:setPropertyActionListener target="#{homeFace.deleteMany}" value="true" />
                 </h:commandButton>
             </p:dialog>

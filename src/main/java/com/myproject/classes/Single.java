@@ -62,13 +62,13 @@ public class Single {
 
     public String getDateIn() throws ParseException {
         DateFormat formatter;
-        formatter = new SimpleDateFormat("dd/MM ' ' HH:mm 'h'");
+        formatter = new SimpleDateFormat("dd/MM");
         return formatter.format(dateIn);
     }
     
     public String getDateOut() throws ParseException {
         DateFormat formatter;
-        formatter = new SimpleDateFormat("dd/MM ' ' HH:mm 'h'");
+        formatter = new SimpleDateFormat("dd/MM");
         return formatter.format(dateOut);
     }
     
@@ -99,11 +99,6 @@ public class Single {
         if ((int)this.state == 3){
             color = "outoftime";
         }
-        /*
-        if(getDays() < 0){
-            color = "outoftime";
-        }
-*/
         
         return color;
     }

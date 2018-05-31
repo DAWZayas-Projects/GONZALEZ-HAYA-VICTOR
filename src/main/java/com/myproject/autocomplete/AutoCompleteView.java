@@ -35,13 +35,11 @@ public class AutoCompleteView {
 
  
     public Theme getSelectedThemes() {
-        System.out.println("GET SELECTEDTHEMES" + selectedThemes);
         Theme t = new Theme();
         return selectedThemes;
     }
  
     public void setSelectedThemes(Theme selectedThemes) {
-       System.out.println("SET SELECTEDTHEMES" + selectedThemes);
        this.selectedThemes = selectedThemes;
     }
     

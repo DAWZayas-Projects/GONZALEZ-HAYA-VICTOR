@@ -16,17 +16,17 @@
             <!-- <p:commandButton value="Cancel" icon="ui-icon-myCancel" /> -->
             <p:commandButton id="showManyButton" process="homeTable" update=":dialog:multiCarDetail" icon="ui-icon-myCancel"  style="background-color:#C7C189 !important;" value="Update" oncomplete="PF('multiCarDialog').show()" disabled="#{empty homeFace.selectedElements}" />
 
-            <p:commandButton id="deleteManyButton" process="homeTable" icon="ui-icon-Trash" style="font-size: 16px !important;border-radius: 4px !important; background-color:#C7A289 !important;" actionListener="#{homeFace.setDeleteMany(true)}" update=":form:message :form:homeTable" disabled="#{empty homeFace.selectedElements}">
+            <p:commandButton id="deleteManyButton" process="homeTable" icon="ui-icon-Trash" style="font-size: 16px !important;border-radius: 4px !important; background-color:#C7A289 !important;" actionListener="#{homeFace.setDeleteMany(true)}" update=":form:message #{prop.updateTable}" disabled="#{empty homeFace.selectedElements}">
                 <p:confirm header="Confirmar eliminación many" message="Estas seguro de querer eliminar: #{homeFace.selectedElements}" icon="ui-icon-alert" />
             </p:commandButton>
 
             <h:commandButton value="Home" style="background-color:#A4BBC2 !important; margin-left: 5px; margin-right: 15px;">
-                <f:ajax render=":form:homeTable :accord:textsearch"></f:ajax>
+                <f:ajax render="#{prop.updateTable} :accord:textsearch"></f:ajax>
                 <f:setPropertyActionListener target="#{homeFace.resetList}" value="true" />
             </h:commandButton>
 
             <ui:repeat value="#{homeFace.paginationTable}" var="k">
-                <p:commandButton value="#{k}" update=":form:homeTable" style="background-color:#{k%2 != 0 ? 'transparent' : 'transparent'} !important;border:none !important; padding-left:-10px !important;box-shadow: none !important;text-align:left !important;color:#888383 !important;border-radius:0 !important; border-right:1px solid #B9B9B9 !important;">
+                <p:commandButton value="#{k}" update="#{prop.updateTable}" style="background-color:transparent !important;color:#{k%2 != 0 ? '#888383' : '#888383'} !important; border:none !important; padding-left:-10px !important;box-shadow: none !important;text-align:left !important;border-radius:0 !important; border-right:1px solid #B9B9B9 !important;">
                     <f:setPropertyActionListener target="#{homeFace.newPage}" value="#{k}" />
                 </p:commandButton>
             </ui:repeat>

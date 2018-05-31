@@ -17,9 +17,7 @@ public class Home extends MongoConnection {
 
     public FindIterable<Document> homeList(boolean defaultt, String filter, String filtertype, Date searchstart, Date searchend, int skiper, int limiter) throws MongoException {
         FindIterable<Document> docs = null;
-        
-        Date d1 = new Date();
-        
+
         if (!defaultt) {
             setTotalresults(getHomeCol().count());
             docs = getHomeCol().find().skip(skiper).limit(limiter).sort(Sorts.ascending("dateOut"));
@@ -27,18 +25,11 @@ public class Home extends MongoConnection {
             docs = homeListFiltered(filter, filtertype, searchstart, searchend, skiper, limiter);
         }
 
-        System.out.println("getCOLLECTION");
-        
-        Date  d2 = new Date();
-        
-        int hola = 0;
         return docs;
     }
 
     public FindIterable<Document> homeListFiltered(String nameFilter, String filtertype, Date searchstart, Date searchend, int skiper, int limiter) {
-        System.out.println("SSSSS" + skiper);
-        System.out.println("LLLLL" + limiter);
-        
+
         Document doc = null;
         FindIterable<Document> f;
 
@@ -128,7 +119,6 @@ public class Home extends MongoConnection {
     }
 
     public boolean deleteMany(List<ObjectId> manyElements) {
-        System.out.println("***DELETEMANY*****" + manyElements);
         boolean deletemany = false;
         long c = 0;
         try {
@@ -143,7 +133,6 @@ public class Home extends MongoConnection {
             }
 
         } catch (Exception e) {
-            System.out.println("***ERROR*****");
             return false;
         }
     }
@@ -154,7 +143,6 @@ public class Home extends MongoConnection {
     }
     
     public FindIterable<Document> getUsers() {
-        System.out.println("getAUTOCOMPLETE");
         FindIterable<Document> users = database.getCollection("users").find();
         return users;
     }

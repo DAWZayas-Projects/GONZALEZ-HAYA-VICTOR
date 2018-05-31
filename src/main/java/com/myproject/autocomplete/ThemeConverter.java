@@ -18,9 +18,7 @@ public class ThemeConverter implements Converter{
  
     @Override
     public Object getAsObject(FacesContext fc, UIComponent uic, String value) {
-        System.out.println("GGG");
         if(value != null && value.trim().length() > 0) {
-            System.out.println("nonull" + value);
             try {
                 ThemeService service = (ThemeService) fc.getExternalContext().getApplicationMap().get("themeService");
                 return service.getThemes().get(Integer.parseInt(value));
@@ -29,7 +27,6 @@ public class ThemeConverter implements Converter{
             }
         }
         else {
-            System.out.println("sinull");
             return null;
         }
     }

@@ -48,7 +48,14 @@ public class HomeFace implements Serializable {
     private List<Integer> paginationTable;
 
     private Single ediElement;
+    
+    private boolean showStates = false;
 
+   
+
+    public void setShowStates(boolean showStates) {
+        this.showStates = showStates;
+    }
     public void init() {
         setHomeListElements();
         selectedElements = null;
@@ -78,7 +85,7 @@ public class HomeFace implements Serializable {
             Home h = new Home();
             docs = h.homeList(filtered, textFilter, textFilterType, searchStart, searchEnd, skiper, nelements);
             results = h.getTotalresults();
-            System.out.println("NRESULTSQUERY" + results);
+            
             for (Document doc : docs) {
                 Document userinfo = h.getUserName(doc.getString("userId"));
                 homeL.add(new Single(
@@ -101,7 +108,6 @@ public class HomeFace implements Serializable {
             System.err.println("**VDEx**" + e);
         }
         
-        System.out.println("NELEMENTSHOMELIST" + homeL.size());
         filtered = false;
     }
 
@@ -282,7 +288,7 @@ public class HomeFace implements Serializable {
     }
 
     public void buttonAction(ObjectId pid, int newstate) {
-        System.out.println("Testing" + pid + "//" + newstate);
+        
         boolean updateconfirm = new Home().updateState(pid, (double) newstate);
 
         if (updateconfirm) {
@@ -295,4 +301,12 @@ public class HomeFace implements Serializable {
 
     }
 
+    public void showStates(){
+        showStates = true;
+    }
+    
+     public boolean allShowStates() {
+        return showStates;
+    }
+    
 }
