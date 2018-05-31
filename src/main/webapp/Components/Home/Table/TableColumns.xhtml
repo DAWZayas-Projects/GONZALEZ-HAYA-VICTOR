@@ -33,10 +33,10 @@
         <p:column headerText="#{prop.daystoexpire}" width="20" style="text-align:center;">
             <h:outputText value="#{item.days}" />
         </p:column>
-        <p:column headerText="#{prop.state}" width="80" class="#{item.state}" style="padding:0 !important;margin:0 !important;">
+        <p:column headerText="#{prop.state}" width="80" class="#{item.state}" style="padding:0 !important;margin:0 !important;" >
             <h:outputText />
             <p:commandButton id="xyz" value=""  style="width:100%;height:40px;border:none !important;box-shadow: none !important;border-radius:0 !important;padding:0 !important;margin:0 !important;background-color:transparent !important;" />
-            <p:overlayPanel id="statebtns" for="xyz"  class="overLPanel"  hideEffect="fade" style="background-color:white !important;box-shadow: none !important;border:none !important;height:auto !important; height:55px !important;" >
+            <p:overlayPanel id="statebtns" for="xyz"  class="overLPanel" rendered="false" hideEffect="fade" style="background-color:white !important;box-shadow: none !important;border:none !important;height:auto !important; height:55px !important;" >
                 <p:commandButton value="" actionListener="#{homeFace.buttonAction(item.pid, 0)}"  update=":form:homeTable" class="stateButton" style="background-color: #77C6C8 !important;" />
                 <p:commandButton value="" actionListener="#{homeFace.buttonAction(item.pid, 1)}" update=":form:homeTable" class="stateButton" style="background-color: #C8C377 !important;" />
                 <p:commandButton value="" actionListener="#{homeFace.buttonAction(item.pid, 2)}" update=":form:homeTable" class="stateButton" style="background-color: #8BB493 !important;" />

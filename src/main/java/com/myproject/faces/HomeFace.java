@@ -154,7 +154,7 @@ public class HomeFace implements Serializable {
     }
 
     public void setFiltered(boolean state) {
-        //this.skiper = 0;
+        this.skiper = 0;
         this.filtered = state;
     }
 

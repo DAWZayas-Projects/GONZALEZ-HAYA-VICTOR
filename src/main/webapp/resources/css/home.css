@@ -136,11 +136,12 @@ and open the template in the editor.
 
 /*HEADER TABLE*/
 .ui-datatable thead th{
-    background: none #A4BBC2 !important;
-    color:#383939 !important;
+    background: none #868585 !important;
+    color:white !important;
     text-shadow: none !important;
     font-weight: inherit !important;
-    font-size:15px;
+    font-weight:  100 !important;
+    font-size:14px;
     border:none !important;
 }
 
@@ -483,3 +484,8 @@ background: none #C68570 !important;*/
 
 
 
+
+.ui-button-text-only .ui-button-text{
+    /*padding: .3em .63em !important;*/
+    
+}

@@ -26,7 +26,7 @@
             </h:commandButton>
 
             <ui:repeat value="#{homeFace.paginationTable}" var="k">
-                <p:commandButton value="#{k}" update=":form:homeTable" style="background-color:#{k%2 != 0 ? '#DCD6BB' : '#CDC7AC'} !important;border:none !important; border-radius:0 !important;padding-left:-30px !important;">
+                <p:commandButton value="#{k}" update=":form:homeTable" style="background-color:#{k%2 != 0 ? 'transparent' : 'transparent'} !important;border:none !important; padding-left:-10px !important;box-shadow: none !important;text-align:left !important;color:#888383 !important;border-radius:0 !important; border-right:1px solid #B9B9B9 !important;">
                     <f:setPropertyActionListener target="#{homeFace.newPage}" value="#{k}" />
                 </p:commandButton>
             </ui:repeat>

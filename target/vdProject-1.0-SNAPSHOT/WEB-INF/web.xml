@@ -19,7 +19,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/Login.xhtml</welcome-file>
+        <welcome-file>faces/Test.xhtml</welcome-file>
     </welcome-file-list>
     <error-page>
         <location>/error.xhtml</location>
