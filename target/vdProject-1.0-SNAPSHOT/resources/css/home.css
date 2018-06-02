@@ -403,7 +403,7 @@ background: none #C68570 !important;*/
 
 
  .ui-icon-myCancel{
-    background-image: url("materials/calendar.png") !important;
+    box-shadow: none !important;
     background-size: 17px;
     border-radius: 0 !important;
     
@@ -548,3 +548,16 @@ background: none #C68570 !important;*/
     display: none;
 }
 
+
+.burni{
+    box-shadow: none !important;
+    background-color: red !important;
+    
+    
+}
+
+
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus{
+    box-shadow:none !important;
+}

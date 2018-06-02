@@ -14,7 +14,7 @@
             <p:commandButton id="archiveButton" value="Archive" style="margin-left:10px !important;box-shadow:none !important;background-color:#9CBE94 !important; margin-left: 5px;" disabled="#{empty homeFace.selectedElements}">
             </p:commandButton>
             <!-- <p:commandButton value="Cancel" icon="ui-icon-myCancel" /> -->
-            <p:commandButton id="showManyButton" process="homeTable" update=":dialog:multiCarDetail" icon="ui-icon-myCancel"  style="background-color:#C7C189 !important;" value="Update" oncomplete="PF('multiCarDialog').show()" disabled="#{empty homeFace.selectedElements}" />
+            <p:commandButton id="showManyButton" process="homeTable" update=":dialog:multiCarDetail"  style="box-shadow: none !important; background-color:#C7C189 !important;" value="Update" oncomplete="PF('multiCarDialog').show()" disabled="#{empty homeFace.selectedElements}" />
 
             <p:commandButton id="deleteManyButton" process="homeTable" icon="ui-icon-Trash" style="font-size: 16px !important;border-radius: 4px !important; background-color:#C7A289 !important;" actionListener="#{homeFace.setDeleteMany(true)}" update=":form:message #{prop.updateTable}" disabled="#{empty homeFace.selectedElements}">
                 <p:confirm header="Confirmar eliminación many" message="Estas seguro de querer eliminar: #{homeFace.selectedElements}" icon="ui-icon-alert" />

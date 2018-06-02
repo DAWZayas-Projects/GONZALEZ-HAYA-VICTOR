@@ -11,17 +11,19 @@
         <p:tab title="Search">
             <h:form id="textsearch" class="headBloc">
                 
+                
+                
                 <p:inputText id="searchinp" maxlength="30" value="#{homeFace.textFilter}" placeholder="búsqueda.." />
                 <p:keyFilter for="searchinp" mask="alphanum" /> 
-                <p:selectOneMenu id="textfilter" value="#{homeFace.textFilterType}" class="listselector">
+                <p:selectOneMenu id="textfilter" value="#{homeFace.textFilterType}" class="listselector" styleClass="burni">
                     <f:selectItem itemLabel="User name" itemValue="userName" />
                     <f:selectItem itemLabel="Description" itemValue="description" />
                     <f:selectItem itemLabel="Departament" itemValue="departament" />
                 </p:selectOneMenu>
 
-                <p:calendar id="startcalendar" value="#{homeFace.searchStart}" placeholder="exp. from" class="btnDefault" size="8"/>
+                <p:calendar id="startcalendar" value="#{homeFace.searchStart}" placeholder="exp. from" class="btnDefault" size="8" autocomplete="false"/>
 
-                <p:calendar id="expirecalendar" value="#{homeFace.searchEnd}" placeholder="exp. to" class="btnDefault" size="8"/>
+                <p:calendar id="expirecalendar" value="#{homeFace.searchEnd}" placeholder="exp. to" class="btnDefault" size="8" autocomplete="false"/>
 
 
                 <p:commandButton type="submit" icon="ui-icon-Search" class="btnIconSty" style="background-color: white !important;font-size: 15px !important;" value="Buscar"  update="#{prop.updateTable}">

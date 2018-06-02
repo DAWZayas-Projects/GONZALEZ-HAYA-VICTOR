@@ -9,30 +9,30 @@
     <ui:composition>
         <p:tab title="Add">
             <h:form id="add" class="headBloc">
-                <p:inputText id="user" maxlength="30" value="#{addFace.texto}" placeholder="texto" required="true"/>
+                <p:inputText id="user" maxlength="200" value="#{homeFace.texto}" placeholder="texto" />
                 <p:keyFilter for="user" mask="alphanum" /> 
-                <p:selectOneMenu id="departament" value="#{addFace.departament}" class="listselector">
+                <p:selectOneMenu id="departament" value="#{homeFace.departament}" class="listselector">
                     <f:selectItem itemLabel="Movil" itemValue="Movil" />
                     <f:selectItem itemLabel="Web" itemValue="Web" />
                     <f:selectItem itemLabel="Administracion" itemValue="Administracion" />
                     <f:selectItem itemLabel="Marketing" itemValue="Marketing" />
                 </p:selectOneMenu>
 
-                <p:selectOneMenu id="state" value="#{addFace.state}" class="listselector">
+                <p:selectOneMenu id="state" value="#{homeFace.state}" class="listselector">
                     <f:selectItem itemLabel="Asignada" itemValue="1" />
                     <f:selectItem itemLabel="Proceso" itemValue="2" />
                     <f:selectItem itemLabel="Finalizada" itemValue="3" />
                 </p:selectOneMenu>
 
-                <p:calendar id="datein" value="#{addFace.calendarIn}" size="8" placeholder="start" class="btnDefault" />
-                <p:calendar id="dateout" value="#{addFace.calendarOut}" size="8" placeholder="end" class="btnDefault" />
+                <p:calendar id="datein" value="#{homeFace.calendarIn}" size="8" placeholder="start" class="btnDefault" autocomplete="false" />
+                <p:calendar id="dateout" value="#{homeFace.calendarOut}" size="8" placeholder="end" class="btnDefault" autocomplete="false" />
                 #{userId}
-                <p:commandButton id="insert" icon="ui-icon-Add" class="btnIconSty" value="Add" style="background-color: white !important;font-size: 15px !important;" actionListener="#{addFace.addElement}" update="#{prop.updateTable}" resetValues="true" />
-            
-                <p:commandButton icon="ui-icon-Reset" class="btnIconSty" style="background-color: white !important;margin-right:20px;" action="#{addFace.resetAdd()}" update="add" >
+                <p:commandButton id="insert" icon="ui-icon-Add" class="btnIconSty" value="Add" style="background-color: white !important;font-size: 15px !important;" actionListener="#{homeFace.addElement}" update="#{prop.updateTable},:form:message" resetValues="true" />
+                
+                
+                <p:commandButton icon="ui-icon-Reset" class="btnIconSty" style="background-color: white !important;margin-right:20px;" action="#{homeFace.resetAdd()}" update="add" >
                 </p:commandButton>
             </h:form>
-            <p:growl id="addmessage" showDetail="true" />
         </p:tab>
 
     </ui:composition>

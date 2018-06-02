@@ -13,19 +13,28 @@ import javax.inject.Named;
 import org.bson.Document;
 import com.myproject.classes.Single;
 import com.myproject.db.Home;
-import com.myproject.faces.actions.AddFace;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 import javax.ejb.Stateless;
 import org.bson.types.ObjectId;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 
 @Named
 @Stateless
 public class HomeFace implements Serializable {
+    
+    //Add Sction
+    private String uid;
+    private String username;
+    private String texto;
+    private String departament;
+    private double state;
+    private Date calendarIn;
+    private Date calendarOut;
+    //Add Sction
 
     private List homeL = new ArrayList();
     private FindIterable<Document> docs;
@@ -310,9 +319,96 @@ public class HomeFace implements Serializable {
         return showStates;
     }
     
-     public void addFlow(){
-         AddFace a = new AddFace();
-         System.out.println("ff" + a.getTexto());
-     }
+   
+     
+     //Add Section
+     public void addElement() {
+        System.out.println("notadded");
+        if (calendarIn != null && calendarOut != null && texto != null && !texto.equals("")) {
+            System.out.println("added");
+            Home home = new Home();
+            Document doc = new Document("userId", "5ab4212db797ad40c44fd145")
+                    .append("userName", "maria")
+                    .append("departament", departament)
+                    .append("description", texto)
+                    .append("state", state)
+                    .append("temas", Arrays.asList("HTML5"))
+                    .append("dateIn", calendarIn)
+                    .append("dateOut", calendarOut);
+
+            home.insertElement(doc);
+            filtered = true;
+            setHomeListElements();
+
+        } else {
+            addMessage("Formulario", "Necesitas rellenar todos los campos");
+        }
+    }
+
+    public void resetAdd() {
+        texto = null;
+        calendarIn = null;
+        calendarOut = null;
+        departament = null;
+        state = 0;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getTexto() {
+        return texto;
+    }
+
+    public void setTexto(String txt) {
+        this.texto = txt;
+    }
+
+    public Date getCalendarIn() {
+        return calendarIn;
+    }
+
+    public void setCalendarIn(Date calendarIn) {
+        this.calendarIn = calendarIn;
+    }
+
+    public Date getCalendarOut() {
+        return calendarOut;
+    }
+
+    public void setCalendarOut(Date calendarOut) {
+        this.calendarOut = calendarOut;
+    }
+
+    public String getDepartament() {
+        return departament;
+    }
+
+    public void setDepartament(String departament) {
+        this.departament = departament;
+    }
+
+    public double getState() {
+        return state;
+    }
+
+    public void setState(double state) {
+        this.state = state;
+    }
+ // Add Section
+
     
 }
