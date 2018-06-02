@@ -13,7 +13,7 @@ import org.primefaces.event.SelectEvent;
 @Stateless
 public class AutoCompleteView {
 
-    private Theme selectedThemes;
+    private List<Theme> selectedThemes;
      
     @Inject
     private ThemeService service;
@@ -31,15 +31,13 @@ public class AutoCompleteView {
          
         return filteredThemes;
     }
-     
 
- 
-    public Theme getSelectedThemes() {
+    public List<Theme> getSelectedThemes() {
         Theme t = new Theme();
         return selectedThemes;
     }
  
-    public void setSelectedThemes(Theme selectedThemes) {
+    public void setSelectedThemes(List<Theme> selectedThemes) {
        this.selectedThemes = selectedThemes;
     }
     

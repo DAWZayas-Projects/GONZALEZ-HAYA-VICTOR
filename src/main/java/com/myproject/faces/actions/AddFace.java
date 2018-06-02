@@ -6,13 +6,17 @@
 package com.myproject.faces.actions;
 
 import com.myproject.db.Home;
+import com.myproject.faces.HomeFace;
 import java.util.Arrays;
 import java.util.Date;
 import javax.ejb.Stateless;
 import javax.enterprise.context.Dependent;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -32,19 +36,30 @@ public class AddFace {
     
     public void addElement () {
         
-        System.out.println(uid + "//" + username + "//" + texto + "//" + calendarIn + "//" + calendarOut + "//" + departament + "//" + state);
-
+        System.out.println(uid + "@@@@@@@@@@@//" + username + "//" + texto + "//" + calendarIn + "//" + calendarOut + "//" + departament + "//" + state);
+        if(calendarIn != null){
+            System.out.println("vv");
         Home home = new Home();
-        Document doc = new Document("userId", uid)
-                .append("userName", username)
-                .append("description", texto)
-                .append("status", state)
+        Document doc = new Document("userId", "5ab4212db797ad40c44fd145")
+                .append("userName", "maria")
                 .append("departament", departament)
+                .append("description", texto)
+                .append("state", state)
                 .append("temas", Arrays.asList("HTML5"))
                 .append("dateIn", calendarIn)
                 .append("dateOut", calendarOut);
         
         home.insertElement(doc);
+        
+        }else{
+            addMessageConf("H","Necesitas rellenar todos los campos");
+        }
+    }
+    
+    public void resetAdd(){
+        texto = null;
+        calendarIn = null;
+        calendarOut = null;
     }
     
     public String getUid (){
@@ -101,6 +116,11 @@ public class AddFace {
     
     public void setState(double state) {
         this.state = state;
+    }
+    
+    public void addMessageConf(String summary, String detail) {
+        FacesMessage addmessage = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+        FacesContext.getCurrentInstance().addMessage(null, addmessage);
     }
     
 }

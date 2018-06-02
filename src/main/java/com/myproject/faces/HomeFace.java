@@ -13,6 +13,7 @@ import javax.inject.Named;
 import org.bson.Document;
 import com.myproject.classes.Single;
 import com.myproject.db.Home;
+import com.myproject.faces.actions.AddFace;
 import java.io.Serializable;
 import java.util.Date;
 import javax.ejb.Stateless;
@@ -308,5 +309,10 @@ public class HomeFace implements Serializable {
      public boolean allShowStates() {
         return showStates;
     }
+    
+     public void addFlow(){
+         AddFace a = new AddFace();
+         System.out.println("ff" + a.getTexto());
+     }
     
 }

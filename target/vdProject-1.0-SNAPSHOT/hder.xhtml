@@ -19,44 +19,39 @@
 
         </h:head>
         <h:body>
-            
-                <h:form>
-                    <p:growl id="msgs" showDetail="true" />
-                    <p:autoComplete id="themes"
-                                    value="#{autoCompleteView.selectedThemes}"
-                                    completeMethod="#{autoCompleteView.completeTheme}"
-                                    var="theme" 
-                                    itemLabel="#{theme.displayName}" 
-                                    itemValue="#{theme}"
-                                    converter="themeConverter"
-                                    forceSelection="true">
-                        <p:column style="width:10%">
-                            <h:graphicImage library="images" name="#{theme.id}.png" style="width:30px;"/>
-                        </p:column>
 
-                        <p:column>
-                            <h:outputText value="#{theme.displayName}" />
-                        </p:column>
-                    </p:autoComplete>
-                    <p:commandButton value="Submit" icon="ui-icon-check" update="output msgs" oncomplete="PF('dlg').show()" />
-                    <p:dialog header="Values" resizable="false" showEffect="fade" widgetVar="dlg">
-                        <p:panelGrid id="output" columns="2" columnClasses="label, value">
+            <h:form>
+                <p:growl id="msgs" showDetail="true" />
+                <p:autoComplete id="themes"
+                                value="#{autoCompleteView.selectedThemes}"
+                                completeMethod="#{autoCompleteView.completeTheme}"
+                                var="theme" 
+                                itemLabel="#{theme.displayName}" 
+                                itemValue="#{theme}"
+                                converter="themeConverter"
+                                forceSelection="true">
+                    <p:column style="width:10%">
+                        <h:graphicImage library="images" name="#{theme.id}.png" style="width:30px;"/>
+                    </p:column>
 
-                            <h:outputText value="Multiple:" />
-                            <h:outputText value="#{autoCompleteView.selectedThemes}" />
+                    <p:column>
+                        <h:outputText value="#{theme.displayName}" />
+                    </p:column>
+                </p:autoComplete>
+                <p:commandButton value="Submit" icon="ui-icon-check" update="output msgs" oncomplete="PF('dlg').show()" />
+                <p:dialog header="Values" resizable="false" showEffect="fade" widgetVar="dlg">
+                    <p:panelGrid id="output" columns="2" columnClasses="label, value">
 
-                        </p:panelGrid>
-                    </p:dialog>
+                        <h:outputText value="Multiple:" />
+                        <p:dataList value="#{autoCompleteView.selectedThemes}" var="t">
+                            <h:outputText value="#{t}" />
+                        </p:dataList>
 
-                    
-                    #{prop.search}
-                    #{prop.hola}
-                    #{prop['hola.senior']}
-                    
-                   
+                    </p:panelGrid>
+                </p:dialog>
 
-                </h:form>
-            
+            </h:form>
+
         </h:body>
     </f:view>
 </html>

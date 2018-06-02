@@ -239,6 +239,7 @@ input[type=submit]:hover{
     text-shadow:none !important;
     font-weight:100 !important;
     font-size:15px !important;
+    outline:none;
     
 }
 
@@ -293,9 +294,16 @@ background: none #C68570 !important;*/
 }
 
 .ui-panel .ui-panel-titlebar {
-    background: none darkgoldenrod;
+    background: none #DADAD8;
+    color: #5B5B5A !important;
+    height: 20px !important;
+    padding:3px !important;
     border: none;
-    font-weight:100;
+    font-size: 15px !important;
+    font-weight:lighter !important;
+    text-shadow: none !important;
+    padding-left: 10px !important;
+    font-style: inherit !important;
     text-decoration: none;
     text-transform: none;
 }
@@ -427,6 +435,29 @@ background: none #C68570 !important;*/
     
 }
 
+ .ui-icon-Add{
+    background-image: url("materials/add.png") !important;
+    background-size: 17px;
+    border-radius: 0 !important;
+    
+    
+}
+
+ .ui-icon-Search{
+    background-image: url("materials/search.png") !important;
+    background-size: 17px;
+    border-radius: 0 !important;
+    
+    
+}
+
+ .ui-icon-Reset{
+    background-image: url("materials/reset.png") !important;
+    background-size: 17px;
+    border-radius: 0 !important;
+    
+    
+}
 
  .ui-icon-Trash{
     background-image: url("materials/trash.png") !important;
@@ -493,3 +524,27 @@ background: none #C68570 !important;*/
 .ui-icon{
     color:white !important;
 }
+
+
+.listselector{
+    border:none !important;
+    height:25px !important;
+    font-size:15px !important;
+    padding-bottom: 3px;
+}
+
+.ui-selectonemenu .ui-selectonemenu-trigger{
+    background-color: white !important;
+    border: none !important;
+}
+
+.ui-widget button .ui-state-hover{
+    box-shadow: none !important;
+    background-color: transparent !important;
+    border:none !important;
+}
+
+.ui-accordion .ui-icon.ui-icon-triangle-1-s {
+    display: none;
+}
+

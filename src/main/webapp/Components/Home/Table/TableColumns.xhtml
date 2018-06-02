@@ -22,7 +22,13 @@
             <h:outputText value="#{item.textShort}" />
         </p:column>
         <p:column headerText="#{prop.tags}" width="100">
-            <h:outputText value="#{item.tags[0]}" />
+            <h:outputText id="content" value="#{item.tags[0]}" />
+
+            <p:tooltip id="toolTipContent" for="content" position="bottom" style="width:100px !important;">
+                <ui:repeat value="#{item.tags}" var="n">
+                   #{n} <p:separator style="background-color:transparent !important;" />
+                </ui:repeat>
+            </p:tooltip>
         </p:column>
         <p:column headerText="#{prop.start}" width="40" visible="false">
             <h:outputText value="#{item.dateIn}" />
