@@ -8,7 +8,9 @@ import static com.mongodb.client.model.Filters.eq;
 import com.mongodb.client.model.Sorts;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
+import com.myproject.classes.Single;
 import com.myproject.faces.HomeFace;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.bson.Document;
@@ -136,6 +138,19 @@ public class Home extends MongoConnection {
         } catch (Exception e) {
             return false;
         }
+    }
+    
+    public boolean archiveMany(List<Single> selectedElements,List<ObjectId> manyElements){
+        System.out.println("go" + selectedElements);
+        List<Document> documents = new ArrayList<Document>();
+        
+        for(Single doc : selectedElements){
+            documents.add(doc.getSingleBSON());
+        }
+        database.getCollection("archive").insertMany(documents);
+        deleteMany(manyElements);
+        
+        return true;
     }
 
     public Document getUserName(String userid) {

@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.bson.Document;
 import org.bson.types.ObjectId;
 
 public class Single {
@@ -33,6 +34,21 @@ public class Single {
         this.tags = tags;
         this.avatar = avatar;
     }
+    
+    public Document getSingleBSON(){
+        Document d = new Document();
+            d.append("postId", getPidString());
+            d.append("userId", userid);
+            d.append("userName", username);
+            d.append("departament", departament);
+            d.append("description", text);
+            d.append("state", state);
+            d.append("temas", tags);
+            d.append("dateIn", dateIn);
+            d.append("dateOut", dateOut);
+       
+        return d;
+    }
 
     public ObjectId getPid() {
         return postid;
@@ -55,11 +71,15 @@ public class Single {
     }
 
     public String getTextShort() {
-        if (text.length() < 10) {
             return text;
-        } else {
-            return text.substring(0, 45) + "..";
-        }
+        
+    }
+    
+    public Date getDateInSimple(){
+        return dateIn;
+    }
+     public Date getDateOutSimple(){
+        return dateOut;
     }
 
     public String getDateIn() throws ParseException {

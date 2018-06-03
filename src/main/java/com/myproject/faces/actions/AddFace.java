@@ -6,17 +6,13 @@
 package com.myproject.faces.actions;
 
 import com.myproject.db.Home;
-import com.myproject.faces.HomeFace;
 import java.util.Arrays;
 import java.util.Date;
 import javax.ejb.Stateless;
-import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import org.bson.Document;
-import org.bson.types.ObjectId;
 
 /**
  *

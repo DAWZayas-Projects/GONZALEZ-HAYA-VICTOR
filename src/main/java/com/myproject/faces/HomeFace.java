@@ -25,7 +25,7 @@ import javax.faces.context.FacesContext;
 @Named
 @Stateless
 public class HomeFace implements Serializable {
-    
+
     //Add Sction
     private String uid;
     private String username;
@@ -34,8 +34,11 @@ public class HomeFace implements Serializable {
     private double state;
     private Date calendarIn;
     private Date calendarOut;
-    //Add Sction
 
+    private List<String> selectedTags;
+    private List<String> tags = new ArrayList();;
+
+    //Lists
     private List homeL = new ArrayList();
     private FindIterable<Document> docs;
 
@@ -44,13 +47,16 @@ public class HomeFace implements Serializable {
 
     private List manyPids;
     private boolean deleteMany;
+    private boolean archiveMany;
 
+    //Search
     private boolean filtered = false;
     private String textFilter;
     private String textFilterType = "userName";
     private Date searchEnd;
     private Date searchStart;
 
+    //Pagination
     private int nelements = 20;
     private int skiper = 0;
 
@@ -58,19 +64,14 @@ public class HomeFace implements Serializable {
     private List<Integer> paginationTable;
 
     private Single ediElement;
-    
-    private boolean showStates = false;
 
-   
-
-    public void setShowStates(boolean showStates) {
-        this.showStates = showStates;
-    }
     public void init() {
+        
+        fillTags();
         setHomeListElements();
         selectedElements = null;
     }
-
+ 
     public List getHomeList() {
         if (filtered) {
             setHomeListElements();
@@ -95,7 +96,7 @@ public class HomeFace implements Serializable {
             Home h = new Home();
             docs = h.homeList(filtered, textFilter, textFilterType, searchStart, searchEnd, skiper, nelements);
             results = h.getTotalresults();
-            
+
             for (Document doc : docs) {
                 Document userinfo = h.getUserName(doc.getString("userId"));
                 homeL.add(new Single(
@@ -117,7 +118,7 @@ public class HomeFace implements Serializable {
         } catch (MongoTimeoutException e) {
             System.err.println("**VDEx**" + e);
         }
-        
+
         filtered = false;
     }
 
@@ -154,8 +155,15 @@ public class HomeFace implements Serializable {
 
     public List getPaginationTable() {
         List<Integer> li = new ArrayList();
-        for (int i = 1; i <= getResultsPagination(); i++) {
-            li.add(i);
+        int page = 10;
+        if (getResultsPagination() > 10) {
+            for (int i = 1; i <= page; i++) {
+                li.add(i);
+            }
+        } else {
+            for (int i = 1; i <= getResultsPagination(); i++) {
+                li.add(i);
+            }
         }
 
         return li;
@@ -297,8 +305,30 @@ public class HomeFace implements Serializable {
         }
     }
 
+    public void setArchiveMany(boolean confmany) {
+        this.archiveMany = confmany;
+        boolean archivemany;
+
+        try {
+            Home x = new Home();
+            archivemany = x.archiveMany(selectedElements, getManyPids());
+            x.closeMongo();
+
+            if (archivemany) {
+                addMessage("Archive", "Archive succesfull");
+                filtered = true;
+                selectedElements.clear();
+            } else {
+                addMessage("Archive", "Archive fail.");
+            }
+        } catch (MongoTimeoutException e) {
+            System.err.println("**VDEx**" + e);
+        }
+
+    }
+
     public void buttonAction(ObjectId pid, int newstate) {
-        
+
         boolean updateconfirm = new Home().updateState(pid, (double) newstate);
 
         if (updateconfirm) {
@@ -311,18 +341,8 @@ public class HomeFace implements Serializable {
 
     }
 
-    public void showStates(){
-        showStates = true;
-    }
-    
-     public boolean allShowStates() {
-        return showStates;
-    }
-    
-   
-     
-     //Add Section
-     public void addElement() {
+    //Add Section
+    public void addElement() {
         System.out.println("notadded");
         if (calendarIn != null && calendarOut != null && texto != null && !texto.equals("")) {
             System.out.println("added");
@@ -332,13 +352,14 @@ public class HomeFace implements Serializable {
                     .append("departament", departament)
                     .append("description", texto)
                     .append("state", state)
-                    .append("temas", Arrays.asList("HTML5"))
+                    .append("temas", selectedTags)
                     .append("dateIn", calendarIn)
                     .append("dateOut", calendarOut);
 
             home.insertElement(doc);
             filtered = true;
             setHomeListElements();
+            System.out.println("ADE" + selectedTags);
 
         } else {
             addMessage("Formulario", "Necesitas rellenar todos los campos");
@@ -351,6 +372,7 @@ public class HomeFace implements Serializable {
         calendarOut = null;
         departament = null;
         state = 0;
+        selectedTags.clear();
     }
 
     public String getUid() {
@@ -408,7 +430,33 @@ public class HomeFace implements Serializable {
     public void setState(double state) {
         this.state = state;
     }
- // Add Section
 
+    public List<String> getSelectedTags() {
+        return selectedTags;
+    }
+
+    public void setSelectedTags(List<String> selectedTags) {
+        this.selectedTags = selectedTags;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
     
+    
+    public void fillTags(){
+        tags.clear();
+        tags.add("HTML");
+        tags.add("Firefox");
+        tags.add("Linux");
+        tags.add("React");
+        tags.add("Vue");
+    }
+    
+    // Add Section
+
 }

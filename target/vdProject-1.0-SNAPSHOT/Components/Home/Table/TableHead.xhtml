@@ -11,7 +11,8 @@
         <f:facet id="myHeader" name="header">
             <span style="float:left; margin-top: 6px; margin-left:5px;"><h:outputText value="#{homeFace.results}" /> <span style="font-weight:100 !important;">resultados</span></span>
             <h:outputText id="scount" value="#{homeFace.selectedCount()}" style="#{homeFace.selectedCount() eq 0 ? 'display:none;' : ''}color: #B1856A;font-size: 14px;margin-left:15px;margin-top:7px;float:left;"/>
-            <p:commandButton id="archiveButton" value="Archive" style="margin-left:10px !important;box-shadow:none !important;background-color:#9CBE94 !important; margin-left: 5px;" disabled="#{empty homeFace.selectedElements}">
+            <p:commandButton id="archiveButton" value="Archive" actionListener="#{homeFace.setArchiveMany(true)}" update="#{prop.updateTable}" style="margin-left:10px !important;box-shadow:none !important;background-color:#9CBE94 !important; margin-left: 5px;" disabled="#{empty homeFace.selectedElements}">
+                <p:confirm header="Confirmar eliminación many" message="Estas seguro de querer eliminar: #{homeFace.selectedElements}" icon="ui-icon-alert" />
             </p:commandButton>
             <!-- <p:commandButton value="Cancel" icon="ui-icon-myCancel" /> -->
             <p:commandButton id="showManyButton" process="homeTable" update=":dialog:multiCarDetail"  style="box-shadow: none !important; background-color:#C7C189 !important;" value="Update" oncomplete="PF('multiCarDialog').show()" disabled="#{empty homeFace.selectedElements}" />
@@ -21,7 +22,7 @@
             </p:commandButton>
 
             <h:commandButton value="Home" style="background-color:#A4BBC2 !important; margin-left: 5px; margin-right: 15px;">
-                <f:ajax render="#{prop.updateTable} :accord:textsearch"></f:ajax>
+                <f:ajax render="#{prop.updateTable} :accord:textsearch :accord:add"></f:ajax>
                 <f:setPropertyActionListener target="#{homeFace.resetList}" value="true" />
             </h:commandButton>
 

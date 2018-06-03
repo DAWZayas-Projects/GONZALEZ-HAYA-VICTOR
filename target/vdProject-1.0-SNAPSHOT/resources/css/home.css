@@ -561,3 +561,11 @@ background: none #C68570 !important;*/
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus{
     box-shadow:none !important;
 }
+
+.ui-selectonemenu-panel .ui-selectonemenu-list{
+    font-size: 15px !important;
+}
+
+.inputColumn{
+    width: 80px;margin-right: 3%;display: flex;flex-flow: wrap;
+}
