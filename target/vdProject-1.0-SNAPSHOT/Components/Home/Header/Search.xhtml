@@ -21,9 +21,9 @@
                     <f:selectItem itemLabel="Departament" itemValue="departament" />
                 </p:selectOneMenu>
 
-                <p:calendar id="startcalendar" value="#{homeFace.searchStart}" placeholder="exp. from" class="btnDefault" size="8" autocomplete="false"/>
+                <p:calendar id="startcalendar" value="#{homeFace.searchStart}" placeholder="exp. from" class="btnDefault" size="8" autocomplete="off" />
 
-                <p:calendar id="expirecalendar" value="#{homeFace.searchEnd}" placeholder="exp. to" class="btnDefault" size="8" autocomplete="false"/>
+                <p:calendar id="expirecalendar" value="#{homeFace.searchEnd}" placeholder="exp. to" class="btnDefault" size="8" autocomplete="off"  />
 
 
                 <p:commandButton type="submit" icon="ui-icon-Search" class="btnIconSty" style="background-color: white !important;font-size: 15px !important;" value="Buscar"  update="#{prop.updateTable}">

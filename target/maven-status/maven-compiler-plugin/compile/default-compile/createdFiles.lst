@@ -1,12 +1,11 @@
+com/myproject/autocomplete/ThemeConverter.class
 com/myproject/autocomplete/ThemeService.class
 com/myproject/db/Login.class
 com/myproject/faces/actions/AddFace.class
 com/myproject/faces/HomeFace.class
 com/myproject/classes/Single.class
-com/myproject/faces/LoginFace.class
-com/myproject/classes/List.class
-com/myproject/autocomplete/ThemeConverter.class
 com/myproject/db/MongoConnection.class
 com/myproject/db/Home.class
 com/myproject/autocomplete/AutoCompleteView.class
 com/myproject/autocomplete/Theme.class
+com/myproject/faces/LoginFace.class

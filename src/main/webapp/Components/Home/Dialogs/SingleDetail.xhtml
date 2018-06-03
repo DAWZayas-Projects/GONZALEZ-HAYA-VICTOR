@@ -8,49 +8,62 @@
 
     <ui:composition>
         <!-- "{homeFace.ediElement ne null}"-->
-        <p:dialog id="myDialog" header="Details" widgetVar="dlg1" width="600" height="540" closeOnEscape="true">
+        <p:dialog id="myDialog" header="Details" widgetVar="dlg1" width="600" height="590" closeOnEscape="true" >
+            <p:tabView>
+                <p:tab title="Details">
+                        <div style="display:flex; flex-flow: row wrap; justify-content: space-around;padding-top: 20px;">
+                            
+                            <p:panel id="ne" style="width: 30%;">
+                                <h:graphicImage library="images" name="3.png" style=""/>
+                            </p:panel>
+                            <div style="width:68%;display:flex;flex-direction: column;">
+                            <p:panel id="nme" header="Name" class="editpanel">
+                                <h:outputText value="#{homeFace.ediElement.userName}" />
+                            </p:panel>
+                            <p:panel id="finance" header="Departament" class="editpanel">
+                                <h:outputText value="#{homeFace.ediElement.departament}" />
+                            </p:panel>
+                            </div>
 
-            <div style="width: 100;display:flex;flex-flow: row wrap; justify-content: space-around;">
-                
-                <p:panel id="ne" style="width: 20%; margin-bottom: 3%;">
-                    <h:graphicImage library="images" name="3.png" style=""/>
-                </p:panel>
-                <p:panel id="nme" header="Name" style="padding:0 !important;width: 81%; margin-bottom: 3%;" class="editpanel">
-                    <h:outputText value="#{homeFace.ediElement.userName}" />
-                </p:panel>
+                            <p:panel id="desc" header="Description" class="editpanel" style="">
+                                <h:outputText value="#{homeFace.ediElement.text}" />
+                            </p:panel>
 
-                <p:panel id="desc" header="Description" class="editpanel" style="width: 81%;margin-bottom: 3%;">
-                    <h:outputText value="#{homeFace.ediElement.text}" />
-                </p:panel>
+                            <p:panel id="startdate" header="Start date" style="width: 30%;" class="editpanel">
+                                <h:outputText value="#{homeFace.ediElement.dateIn}" />
+                            </p:panel>
 
-                <p:panel id="startdate" header="Start date" style="margin-left:7%;width: 22%; margin-bottom: 3%;" class="editpanel">
-                    <h:outputText value="#{homeFace.ediElement.dateIn}" />
-                </p:panel>
+                            <p:panel id="spiredate" header="Spire date" style="width: 30%; " class="editpanel">
+                                <h:outputText value="#{homeFace.ediElement.dateOut}" />
+                            </p:panel>
 
-                <p:panel id="spiredate" header="Spire date" style="width: 22%; margin-bottom: 3%;" class="editpanel">
-                    <h:outputText value="#{homeFace.ediElement.dateOut}" />
-                </p:panel>
+                            <p:panel id="expire" header="Expire" style="width: 30%; " class="editpanel">
+                                <h:outputText value="#{homeFace.ediElement.days}" />
+                            </p:panel>
 
-                <p:panel id="expire" header="Expire" style="margin-right:7%;width: 22%; margin-bottom: 3%;" class="editpanel">
-                    <h:outputText value="#{homeFace.ediElement.days}" />
-                </p:panel>
+                            <p:panel id="state" header="State" style="width: 48%;margin-bottom: 3%;" class="editpanel">
+                                <h:outputText value="#{homeFace.ediElement.state}" />
+                            </p:panel>
+                            
+                            <p:panel id="tags" header="Tags" style="width: 48%;margin-bottom: 3%;" class="editpanel">
+                                <h:outputText value="#{homeFace.ediElement.tags}" />
+                            </p:panel>
 
-                <p:panel id="state" header="State" style="margin-left:8%;width: 40%;margin-bottom: 3%;" class="editpanel">
-                    <h:outputText value="#{homeFace.ediElement.userName}" />
-                </p:panel>
+                            
+                        </div>
+                </p:tab>
+                <p:tab title="Edit">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        hola2
+                    </h:panelGrid>
+                </p:tab>
+                <p:tab title="User profile">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        hola3
+                    </h:panelGrid>
+                </p:tab>
+            </p:tabView>
 
-                <p:panel id="finance" header="Departament" style="margin-right:8%;width: 40%;margin-bottom: 3%;" class="editpanel">
-                    <h:outputText value="#{homeFace.ediElement.departament}" />
-                </p:panel>
-
-
-                <p:commandButton value="Editar" />
-                <p:commandButton value="Perfil de @user" />
-                <p:commandButton value="Cerrar" onclick="PF('dlg1').hide();"/>
-
-
-            </div>
-            <div style="clear:both" />
         </p:dialog>
     </ui:composition>
 </html>

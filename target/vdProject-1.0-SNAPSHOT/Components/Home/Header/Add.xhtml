@@ -9,40 +9,40 @@
     <ui:composition>
         <p:tab title="Add">
             <h:form id="add" class="headBloc">
-                <p:inputTextarea rows="4" cols="33" id="user" maxlength="200" value="#{homeFace.texto}" placeholder="description.." />
+                <p:inputTextarea rows="4" cols="33" id="user" maxlength="200" value="#{homeFace.texto}" style="box-shadow: none !important;padding:10px !important;" placeholder="description.." />
                 <div  class="inputColumn">
-                <p:selectOneMenu id="departament" value="#{homeFace.departament}" class="listselector" style="margin-bottom:20px;">
-                    <f:selectItem itemLabel="Movil" itemValue="Movil" />
-                    <f:selectItem itemLabel="Web" itemValue="Web" />
-                    <f:selectItem itemLabel="Administracion" itemValue="Administracion" />
-                    <f:selectItem itemLabel="Marketing" itemValue="Marketing" />
-                </p:selectOneMenu>
+                    <p:selectOneMenu id="departament" value="#{homeFace.departament}" class="listselector" style="margin-bottom:20px;">
+                        <f:selectItem itemLabel="Movil" itemValue="Movil" />
+                        <f:selectItem itemLabel="Web" itemValue="Web" />
+                        <f:selectItem itemLabel="Administracion" itemValue="Administracion" />
+                        <f:selectItem itemLabel="Marketing" itemValue="Marketing" />
+                    </p:selectOneMenu>
 
-                <p:selectOneMenu id="state" value="#{homeFace.state}" class="listselector">
-                    <f:selectItem itemLabel="Asignada" itemValue="1" />
-                    <f:selectItem itemLabel="Proceso" itemValue="2" />
-                    <f:selectItem itemLabel="Finalizada" itemValue="3" />
-                </p:selectOneMenu>
+                    <p:selectOneMenu id="state" value="#{homeFace.state}" class="listselector">
+                        <f:selectItem itemLabel="Asignada" itemValue="1" />
+                        <f:selectItem itemLabel="Proceso" itemValue="2" />
+                        <f:selectItem itemLabel="Finalizada" itemValue="3" />
+                    </p:selectOneMenu>
                 </div>
                 <div  class="inputColumn">
-                    <p:calendar id="datein" value="#{homeFace.calendarIn}" size="8" placeholder="start" class="btnDefault" autocomplete="false"  style="margin-bottom:20px;" />
-                <p:calendar id="dateout" value="#{homeFace.calendarOut}" size="8" placeholder="end" class="btnDefault" autocomplete="false" />
+                    <p:calendar id="datein" value="#{homeFace.calendarIn}" size="8"  placeholder="start" class="btnDefault"   style="margin-bottom:20px;" autocomplete="off" />
+                    <p:calendar id="dateout" value="#{homeFace.calendarOut}" size="8" placeholder="end" class="btnDefault" autocomplete="off" />
                 </div>
                 #{userId}
-                
-                
+
+
                 <!--
                 <p:commandButton id="advn" value="Tags" />
                 <p:overlayPanel for="advn" hideEffect="fade" style="font-size: 15px !important;" appendToBody="true">
                 -->
-                <p:selectManyMenu id="adv" value="#{homeFace.selectedTags}" style="font-size: 15px !important;" scrollHeight="95"
-                                      var="t" showCheckbox="true">
-                        <f:selectItems value="#{homeFace.tags}" var="tag" itemLabel="#{tag}" itemValue="#{tag}" />
+                <p:selectManyMenu id="adv" value="#{homeFace.selectedTags}" style="font-size: 15px !important; border:none !important;box-shadow: none !important;" scrollHeight="95"
+                                  var="t" showCheckbox="true">
+                    <f:selectItems value="#{homeFace.tags}" var="tag" itemLabel="#{tag}" itemValue="#{tag}" />
 
-                        <p:column>
-                            <h:outputText value="#{t}" />
-                        </p:column>
-                    </p:selectManyMenu>
+                    <p:column>
+                        <h:outputText value="#{t}" />
+                    </p:column>
+                </p:selectManyMenu>
                 <!--
                 </p:overlayPanel>
                 -->

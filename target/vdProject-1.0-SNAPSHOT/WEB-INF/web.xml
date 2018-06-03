@@ -24,4 +24,14 @@
     <error-page>
         <location>/error.xhtml</location>
     </error-page>
+    <ejb-local-ref>
+        <ejb-ref-name>themeService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <ejb-link>#ThemeService</ejb-link>
+    </ejb-local-ref>
+    <ejb-local-ref>
+        <ejb-ref-name>themeService1</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <ejb-link>#ThemeService</ejb-link>
+    </ejb-local-ref>
 </web-app>

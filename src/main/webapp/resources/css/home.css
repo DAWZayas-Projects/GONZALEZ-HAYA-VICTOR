@@ -152,7 +152,7 @@ and open the template in the editor.
     font-weight: inherit !important;
     font-style: inherit !important;
     text-shadow: none !important;
-    background: none #BBDAE1 !important;
+    background: none #C9DBDB !important;
     color:black !important;
 
 }
@@ -225,6 +225,7 @@ input[type=submit]:hover{
     font-weight:100;
     text-decoration: none;
     text-transform: none;
+    margin-bottom: 10px;
 
 
 }
@@ -324,7 +325,7 @@ background: none #C68570 !important;*/
 }
 
 .ui-datatable tr.ui-datatable-even:hover, .ui-datatable tr.ui-datatable-odd:hover {
-    background: #BBDAE1;
+    background: #DEEAEA;
 }
 
 /*
@@ -568,4 +569,51 @@ background: none #C68570 !important;*/
 
 .inputColumn{
     width: 80px;margin-right: 3%;display: flex;flex-flow: wrap;
+}
+
+
+.ui-chkbox-icon.ui-icon{
+    background-color: white !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0;
+    color: grey !important;
+}
+
+.ui-tabs.ui-tabs-top>.ui-tabs-nav{
+    background-color: white !important;
+    
+}
+
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited{
+    background-color: white !important;
+}
+
+#ui-datepicker-div{
+    background: none !important;
+}
+
+.ui-datepicker table{
+    border:1px solid #5D5D5D !important;
+}
+.ui-datepicker .ui-datepicker-calendar .ui-state-default{
+    border:1px solid #CDCDCD !important;
+    color:#585858 !important;
+}
+
+.ui-datepicker th{
+    border:1px solid #CDCDCD !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    font-weight: lighter !important;
+    font-size: 15px !important;
+}
+
+.ui-datepicker .ui-datepicker-current-day .ui-state-highlight, .ui-datepicker .ui-datepicker-current-day .ui-state-default{
+    background-color: #E1D7D7 !important;
+    text-shadow:none !important;
+}
+
+.ui-datepicker .ui-datepicker-title{
+    text-shadow:none !important;
 }

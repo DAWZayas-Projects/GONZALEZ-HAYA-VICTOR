@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.inject.Named;
 import org.bson.Document;
 
@@ -15,7 +16,7 @@ import org.bson.Document;
 @Named
 @Stateless
 public class ThemeService {
-     
+
     private List<Theme> themes;
     FindIterable<Document> f;
      
@@ -41,7 +42,8 @@ public class ThemeService {
             System.err.println("**VDEx**" + e);
         }
     }
-     
+    
+    
     public List<Theme> getThemes() {
         return themes;
     } 

@@ -21,7 +21,6 @@
         <h:body>
 
             <h:form>
-                <p:growl id="msgs" showDetail="true" />
                 <p:autoComplete id="themes"
                                 value="#{autoCompleteView.selectedThemes}"
                                 completeMethod="#{autoCompleteView.completeTheme}"
@@ -35,23 +34,10 @@
                     </p:column>
 
                     <p:column>
-                        <h:outputText value="#{theme.displayName}" />
+                        <h:outputText value="#{theme.displayName}"  />
                     </p:column>
                 </p:autoComplete>
-                <p:commandButton value="Submit" icon="ui-icon-check" update="output msgs" oncomplete="PF('dlg').show()" />
-                <p:dialog header="Values" resizable="false" showEffect="fade" widgetVar="dlg">
-                    <p:panelGrid id="output" columns="2" columnClasses="label, value">
-
-                        <h:outputText value="Multiple:" />
-                        <p:dataList value="#{autoCompleteView.selectedThemes}" var="t">
-                            <h:outputText value="#{t}" />
-                        </p:dataList>
-
-                    </p:panelGrid>
-                </p:dialog>
-
             </h:form>
-   
         </h:body>
     </f:view>
 </html>

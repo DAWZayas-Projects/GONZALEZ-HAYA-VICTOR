@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.myproject.autocomplete;
 
 
@@ -17,11 +18,11 @@ import javax.faces.convert.FacesConverter;
 public class ThemeConverter implements Converter{
  
     @Override
-    public Object getAsObject(FacesContext fc, UIComponent uic, String value) {
+    public String getAsObject(FacesContext fc, UIComponent uic, String value) {
+        
         if(value != null && value.trim().length() > 0) {
             try {
-                ThemeService service = (ThemeService) fc.getExternalContext().getApplicationMap().get("themeService");
-                return service.getThemes().get(Integer.parseInt(value));
+                return value;
             } catch(NumberFormatException e) {
                 throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "Not a valid theme."));
             }
@@ -33,9 +34,8 @@ public class ThemeConverter implements Converter{
  
     @Override
     public String getAsString(FacesContext fc, UIComponent uic, Object object) {
-        System.out.println("%%%%%%%%%%%%%%");
         if(object != null) {
-            return String.valueOf(((Theme) object).getId());
+            return String.valueOf(((Theme) object).getDisplayName());
         }
         else {
             return null;
