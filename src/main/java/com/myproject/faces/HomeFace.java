@@ -12,6 +12,7 @@ import java.util.List;
 import javax.inject.Named;
 import org.bson.Document;
 import com.myproject.classes.Single;
+import com.myproject.classes.User;
 import com.myproject.db.Home;
 import java.io.Serializable;
 import java.util.Arrays;
@@ -64,6 +65,7 @@ public class HomeFace implements Serializable {
     private List<Integer> paginationTable;
 
     private Single ediElement;
+    private User userProfile;
 
     public void init() {
         
@@ -244,7 +246,23 @@ public class HomeFace implements Serializable {
     }
 
     public void setEdiElement(Single ediElement) {
+        setUserProfile(ediElement.getId());
         this.ediElement = ediElement;
+    }
+    
+    public void setUserProfile(String uid){
+        try {
+            Home hu = new Home();
+            userProfile = new User(hu.getUserName(uid));
+            hu.closeMongo();
+            
+        } catch (MongoTimeoutException e) {
+            System.err.println("**VDEx**" + e);
+        }
+    }
+    
+    public User getUserProfile(){
+        return userProfile;
     }
 
     public void deleteSingle(ObjectId obj) {

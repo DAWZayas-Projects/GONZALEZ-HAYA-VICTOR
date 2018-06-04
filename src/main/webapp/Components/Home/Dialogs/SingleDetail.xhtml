@@ -11,46 +11,42 @@
         <p:dialog id="myDialog" header="Details" widgetVar="dlg1" width="600" height="590" closeOnEscape="true" >
             <p:tabView>
                 <p:tab title="Details">
-                        <div style="display:flex; flex-flow: row wrap; justify-content: space-around;padding-top: 20px;">
-                            
-                            <p:panel id="ne" style="width: 30%;">
-                                <h:graphicImage library="images" name="3.png" style=""/>
-                            </p:panel>
-                            <div style="width:68%;display:flex;flex-direction: column;">
-                            <p:panel id="nme" header="Name" class="editpanel">
-                                <h:outputText value="#{homeFace.ediElement.userName}" />
-                            </p:panel>
-                            <p:panel id="finance" header="Departament" class="editpanel">
-                                <h:outputText value="#{homeFace.ediElement.departament}" />
-                            </p:panel>
-                            </div>
+                    <div style="display:flex; flex-flow: row wrap; justify-content: space-around;padding-top: 20px;">
 
-                            <p:panel id="desc" header="Description" class="editpanel" style="">
-                                <h:outputText value="#{homeFace.ediElement.text}" />
-                            </p:panel>
 
-                            <p:panel id="startdate" header="Start date" style="width: 30%;" class="editpanel">
-                                <h:outputText value="#{homeFace.ediElement.dateIn}" />
-                            </p:panel>
+                        <p:panel id="nme" header="Name" class="editpanel" style="width:45%; float: left;">
+                            <h:graphicImage library="images" name="#{homeFace.userProfile.avatar}.png" rendered="#{homeFace.userProfile ne null}" style="width: 20px;margin-right: 10px;"/><h:outputText value="#{homeFace.ediElement.userName}" />
+                        </p:panel>
+                        <p:panel id="finance" header="Departament" class="editpanel" style="width:45%;">
+                            <h:outputText value="#{homeFace.ediElement.departament}" />
+                        </p:panel>
 
-                            <p:panel id="spiredate" header="Spire date" style="width: 30%; " class="editpanel">
-                                <h:outputText value="#{homeFace.ediElement.dateOut}" />
-                            </p:panel>
+                        <p:panel id="desc" header="Description" class="editpanel" style="">
+                            <h:outputText value="#{homeFace.ediElement.text}" />
+                        </p:panel>
 
-                            <p:panel id="expire" header="Expire" style="width: 30%; " class="editpanel">
-                                <h:outputText value="#{homeFace.ediElement.days}" />
-                            </p:panel>
+                        <p:panel id="startdate" header="Start date" style="width: 30%;" class="editpanel">
+                            <h:outputText value="#{homeFace.ediElement.dateIn}" />
+                        </p:panel>
 
-                            <p:panel id="state" header="State" style="width: 48%;margin-bottom: 3%;" class="editpanel">
-                                <h:outputText value="#{homeFace.ediElement.state}" />
-                            </p:panel>
-                            
-                            <p:panel id="tags" header="Tags" style="width: 48%;margin-bottom: 3%;" class="editpanel">
-                                <h:outputText value="#{homeFace.ediElement.tags}" />
-                            </p:panel>
+                        <p:panel id="spiredate" header="Spire date" style="width: 30%; " class="editpanel">
+                            <h:outputText value="#{homeFace.ediElement.dateOut}" />
+                        </p:panel>
 
-                            
-                        </div>
+                        <p:panel id="expire" header="Expire" style="width: 30%; " class="editpanel">
+                            <h:outputText value="#{homeFace.ediElement.days}" />
+                        </p:panel>
+
+                        <p:panel id="state" header="State" style="width: 45%;" class="editpanel">
+                            <h:outputText value="#{homeFace.ediElement.state}" />
+                        </p:panel>
+
+                        <p:panel id="tags" header="Tags" style="width: 45%;" class="editpanel">
+                            <h:outputText value="#{homeFace.ediElement.tags}" />
+                        </p:panel>
+
+
+                    </div>
                 </p:tab>
                 <p:tab title="Edit">
                     <h:panelGrid columns="2" cellpadding="10">
@@ -58,9 +54,22 @@
                     </h:panelGrid>
                 </p:tab>
                 <p:tab title="User profile">
-                    <h:panelGrid columns="2" cellpadding="10">
-                        hola3
-                    </h:panelGrid>
+                    <div style="display:flex; flex-flow: row wrap; justify-content: space-around;padding-top: 20px;">
+                        <p:panel id="userphoto" class="editpanel" style="width:28%;">
+                            <h:graphicImage library="images" name="#{homeFace.userProfile.avatar}.png" rendered="#{homeFace.userProfile ne null}"/>
+                        </p:panel>
+                        <div style="width:68%;display:flex;flex-flow: row wrap;">
+                            <p:panel id="nme22" header="Name" class="editpanel">
+                                <h:outputText value="#{homeFace.userProfile.name}" />
+                            </p:panel>
+                            <p:panel id="useremail" header="Departament" class="editpanel" style="width: 45%;">
+                                <h:outputText value="#{homeFace.userProfile.mail}" />
+                            </p:panel>
+                            <p:panel id="userage" header="Edad" class="editpanel" style="width: 45%;">
+                                <h:outputText value="#{homeFace.userProfile.edad}" />
+                            </p:panel>
+                        </div>
+                    </div>
                 </p:tab>
             </p:tabView>
 
