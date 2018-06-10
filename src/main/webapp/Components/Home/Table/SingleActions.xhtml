@@ -8,13 +8,11 @@
 
     <ui:composition>
 
-        <p:commandButton icon="ui-icon-Details" class="btnIconSty" update=":form:myDialog" oncomplete="PF('dlg1').show();">
+        <p:commandButton icon="ui-icon-Details" class="btnIconSty" style="background-color: #EAE9DD !important;" update=":form:myDialog" oncomplete="PF('dlg1').show();">
             <f:setPropertyActionListener target="#{homeFace.ediElement}" value="#{item}"/>
         </p:commandButton>
 
-        <p:commandButton  icon="ui-icon-Edit"  class="btnIconSty" type="button"/>
-
-        <p:commandButton icon="ui-icon-Remove" actionListener="#{homeFace.deleteSingle(item.pid)}" style="background-color:" class="btnIconSty" update=":form:message,#{prop.updateTable}">
+        <p:commandButton icon="ui-icon-Remove" actionListener="#{homeFace.deleteSingle(item.pid)}" style="background-color: #EAE9DD !important;" class="btnIconSty" update=":form:message,#{prop.updateTable}">
             <p:confirm header="Confirmar eliminación" message="Estas seguro de eliminar esta tarea?" icon="ui-icon-alert" />
         </p:commandButton>
     </ui:composition>

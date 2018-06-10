@@ -7,21 +7,19 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition>
-        <p:column selectionMode="multiple" style="width:16px;text-align:center" />
+        <p:column selectionMode="multiple" width="1" style="width:16px;text-align:center" />
         <p:column headerText="#{prop.pid}" width="300" visible="false">
             <h:outputText value="#{item.pid}" />
         </p:column>
-        <p:column headerText="#{prop.departament}" width="180" sortBy="#{item.departament}">
-            <h:outputText value="#{item.departament}" />
+        <p:column headerText="" width="3" sortBy="#{item.departament}">
+            <h:graphicImage alt="Client image" library="images" name="#{item.departament}.png" style="max-height:20px;max-width:40px;margin-right:10px;"/>
+            <!-- <h:outputText value="#{item.departament}" /> -->
         </p:column>
-        <p:column headerText="#{prop.employer}" width="120" sortBy="#{item.userName}">
-            <h:graphicImage alt="Profile image" library="images" name="#{item.avatar}.png" style="width:15px;margin-right:10px;"/>
-            <h:outputText value="#{item.userName}" />
-          </p:column>
-        <p:column headerText="#{prop.description}" width="300">
+        
+        <p:column headerText="#{prop.description}" width="330">
             <h:outputText value="#{item.textShort}" />
         </p:column>
-        <p:column headerText="#{prop.tags}" width="100">
+        <p:column headerText="#{prop.tags}" width="40">
             <h:outputText id="content" value="#{item.tags[0]}" />
             <p:tooltip id="toolTipContent" for="content" position="bottom" style="width:100px !important;">
                 <ui:repeat value="#{item.tags}" var="n">
@@ -32,14 +30,19 @@
         <p:column headerText="#{prop.start}" width="40" visible="false">
             <h:outputText value="#{item.dateIn}" />
         </p:column>
-        <p:column headerText="#{prop.expiredate}" width="40">
+        <p:column headerText="#{prop.expiredate}" width="20">
             <h:outputText value="#{item.dateOut}" />
         </p:column>
-        <p:column headerText="#{prop.daystoexpire}" width="20" style="text-align:center;">
+        <p:column headerText="#{prop.daystoexpire}" width="10" style="text-align:center;">
             <h:outputText value="#{item.days}" style="#{item.days lt 0 ? 'color:red;' : ''}" />
         </p:column>
         
-        <p:column headerText="#{prop.state}" width="80" class="#{item.state}" style="padding:0 !important;margin:0 !important;" >
+        <p:column headerText="" width="10" sortBy="#{item.userName}">
+            <h:graphicImage alt="Profile image" library="images" name="#{item.avatar}.png" style="width:20px;margin-right:10px;"/>
+            <!--  <h:outputText value="#{item.userName}" /> -->
+          </p:column>
+        
+        <p:column headerText="" width="40" class="#{item.state}" style="padding:0 !important;margin:0 !important;" >
             <h:outputText />
             <p:commandButton id="xyz" value="" class="overlaystate" />
             <p:overlayPanel id="statebtns" for="xyz" class="overLPanel" hideEffect="fade">
@@ -50,7 +53,7 @@
             </p:overlayPanel>
         </p:column>
 
-        <p:column headerText="" width="130" rendered="true">
+        <p:column headerText="" width="50" rendered="true">
             <ui:include src="SingleActions.xhtml" />
         </p:column>
     </ui:composition>
