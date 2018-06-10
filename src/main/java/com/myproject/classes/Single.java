@@ -81,17 +81,27 @@ public class Single {
      public Date getDateOutSimple(){
         return dateOut;
     }
-
-    public String getDateIn() throws ParseException {
+     
+     public String parseDate(String s,Date d){
         DateFormat formatter;
-        formatter = new SimpleDateFormat("dd/MM");
-        return formatter.format(dateIn);
+        formatter = new SimpleDateFormat(s);
+        return formatter.format(d);
+     }
+
+    public String getDateInEdit() throws ParseException{
+        return parseDate("dd/MM/yyyy", dateIn);
+    }
+    
+    public String getDateOutEdit() throws ParseException{
+        return parseDate("dd/MM/yyyy", dateOut);
+    }
+
+    public String getDateIn() throws ParseException{
+        return parseDate("dd/MM", dateIn);
     }
 
     public String getDateOut() throws ParseException {
-        DateFormat formatter;
-        formatter = new SimpleDateFormat("dd/MM");
-        return formatter.format(dateOut);
+        return parseDate("dd/MM", dateOut);
     }
 
     public Object getTags() {
@@ -172,4 +182,13 @@ public class Single {
     public void setAvatar(double avatar) {
         this.avatar = avatar;
     }
+    
+    public Date getDateFrom(){
+        return dateIn;
+    }
+    
+    public Date getDateTo(){
+        return dateOut;
+    }
+
 }

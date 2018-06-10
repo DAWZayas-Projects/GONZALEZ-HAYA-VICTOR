@@ -108,6 +108,23 @@ public class Home extends MongoConnection {
         }
 
     }
+    
+    public boolean updateSingle(Single doc){
+        
+        Document bsonDoc = doc.getSingleBSON();
+        
+        ObjectId objpid = doc.getPid();
+        bsonDoc.remove("postId");
+        System.out.println("CONTROL" + bsonDoc);
+        try {
+            UpdateResult result = getHomeCol().replaceOne(new Document("_id", objpid), bsonDoc);
+            return result.getModifiedCount() == 1;
+
+        } catch (Exception e) {
+            System.out.println("//////" + e);
+            return false;
+        }
+    }
 
     public boolean updateState(ObjectId obj, double newstate) {
         

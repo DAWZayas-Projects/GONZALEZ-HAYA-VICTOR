@@ -15,15 +15,14 @@
             <h:outputText value="#{item.departament}" />
         </p:column>
         <p:column headerText="#{prop.employer}" width="120" sortBy="#{item.userName}">
-            <h:graphicImage library="images" name="#{item.avatar}.png" style="width:15px;margin-right:10px;"/>
+            <h:graphicImage alt="Profile image" library="images" name="#{item.avatar}.png" style="width:15px;margin-right:10px;"/>
             <h:outputText value="#{item.userName}" />
-        </p:column>
+          </p:column>
         <p:column headerText="#{prop.description}" width="300">
             <h:outputText value="#{item.textShort}" />
         </p:column>
         <p:column headerText="#{prop.tags}" width="100">
             <h:outputText id="content" value="#{item.tags[0]}" />
-
             <p:tooltip id="toolTipContent" for="content" position="bottom" style="width:100px !important;">
                 <ui:repeat value="#{item.tags}" var="n">
                    #{n} <p:separator style="background-color:transparent !important;" />
@@ -37,16 +36,17 @@
             <h:outputText value="#{item.dateOut}" />
         </p:column>
         <p:column headerText="#{prop.daystoexpire}" width="20" style="text-align:center;">
-            <h:outputText value="#{item.days}" />
+            <h:outputText value="#{item.days}" style="#{item.days lt 0 ? 'color:red;' : ''}" />
         </p:column>
+        
         <p:column headerText="#{prop.state}" width="80" class="#{item.state}" style="padding:0 !important;margin:0 !important;" >
             <h:outputText />
-            <p:commandButton id="xyz" value=""  style="width:100%;height:40px;border:none !important;box-shadow: none !important;border-radius:0 !important;padding:0 !important;margin:0 !important;background-color:transparent !important;" />
-            <p:overlayPanel id="statebtns" rendered="false" for="xyz" class="overLPanel" hideEffect="fade" style="background-color:white !important;box-shadow: none !important;border:none !important;height:auto !important; height:55px !important;" >
-                <p:commandButton value="" actionListener="#{homeFace.buttonAction(item.pid, 0)}"  update="#{prop.updateTable}" class="stateButton" style="background-color: #77C6C8 !important;" />
-                <p:commandButton value="" actionListener="#{homeFace.buttonAction(item.pid, 1)}" update="#{prop.updateTable}" class="stateButton" style="background-color: #C8C377 !important;" />
-                <p:commandButton value="" actionListener="#{homeFace.buttonAction(item.pid, 2)}" update="#{prop.updateTable}" class="stateButton" style="background-color: #8BB493 !important;" />
-                <p:commandButton value="" actionListener="#{homeFace.buttonAction(item.pid, 3)}" update="#{prop.updateTable}" class="stateButton" style="background-color: #E16C4D !important;" />
+            <p:commandButton id="xyz" value="" class="overlaystate" />
+            <p:overlayPanel id="statebtns" for="xyz" class="overLPanel" hideEffect="fade">
+                <p:commandButton value="" rendered="#{item.state != 'assigned'}" actionListener="#{homeFace.buttonAction(item.pid, 0)}" update="#{prop.updateTable}" class="stateButton" style="background-color: #77C6C8 !important;" />
+                <p:commandButton value="" rendered="#{item.state != 'process'}" actionListener="#{homeFace.buttonAction(item.pid, 1)}" update="#{prop.updateTable}" class="stateButton" style="background-color: #C8C377 !important;" />
+                <p:commandButton value="" rendered="#{item.state != 'completed'}" actionListener="#{homeFace.buttonAction(item.pid, 2)}" update="#{prop.updateTable}" class="stateButton" style="background-color: #8BB493 !important;" />
+                <p:commandButton value="" rendered="#{item.state != 'outoftime'}" actionListener="#{homeFace.buttonAction(item.pid, 3)}" update="#{prop.updateTable}" class="stateButton" style="background-color: #E16C4D !important;" />
             </p:overlayPanel>
         </p:column>
 

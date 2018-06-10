@@ -9,13 +9,11 @@
     <ui:composition>
         <!-- "{homeFace.ediElement ne null}"-->
         <p:dialog id="myDialog" header="Details" widgetVar="dlg1" width="600" height="590" closeOnEscape="true" >
-            <p:tabView>
+            <p:tabView id="tabvw">
                 <p:tab title="Details">
                     <div style="display:flex; flex-flow: row wrap; justify-content: space-around;padding-top: 20px;">
-
-
                         <p:panel id="nme" header="Name" class="editpanel" style="width:45%; float: left;">
-                            <h:graphicImage library="images" name="#{homeFace.userProfile.avatar}.png" rendered="#{homeFace.userProfile ne null}" style="width: 20px;margin-right: 10px;"/><h:outputText value="#{homeFace.ediElement.userName}" />
+                            <h:graphicImage alt="Profile image" library="images" name="#{homeFace.userProfile.avatar}.png" rendered="#{homeFace.userProfile ne null}" style="width: 20px;margin-right: 10px;"/><h:outputText value="#{homeFace.ediElement.userName}" />
                         </p:panel>
                         <p:panel id="finance" header="Departament" class="editpanel" style="width:45%;">
                             <h:outputText value="#{homeFace.ediElement.departament}" />
@@ -48,15 +46,47 @@
 
                     </div>
                 </p:tab>
-                <p:tab title="Edit">
-                    <h:panelGrid columns="2" cellpadding="10">
-                        hola2
-                    </h:panelGrid>
+                <p:tab title="Edit" id="editab">
+                    
+                    <div style="display:flex; flex-flow: row wrap; justify-content: space-around;padding-top: 20px;">
+                        <p:panel id="editnme" header="Name" class="editpanel" style="width:45%; float: left;">
+                            <h:graphicImage alt="Profile image" library="images" name="#{homeFace.userProfile.avatar}.png" rendered="#{homeFace.userProfile ne null}" style="width: 20px;margin-right: 10px;"/><h:outputText value="#{homeFace.ediElement.userName}" />
+                        </p:panel>
+
+                        <p:panel id="editfinance" header="Departament" class="editpanel" style="width:45%;">
+                            <h:outputText value="#{homeFace.ediElement.departament}" />
+                        </p:panel>
+    
+                        <p:panel id="editdesc22" header="Description" class="editpanel" style="">
+                            <p:inputTextarea value="#{homeFace.editext}" placeholder="#{homeFace.ediElement.text}" rows="4" cols="45" maxlength="200"  class="textbox" />
+                        </p:panel>
+
+                        <p:panel  header="Date in" style="width: 31%; " class="editpanel">
+                            <p:calendar value="#{homeFace.ediIn}" placeholder="#{homeFace.ediElement.dateInEdit}" size="10" class="btnDefault" autocomplete="off" />
+                        </p:panel>
+
+                        <p:panel header="Date out" style="width: 31%; " class="editpanel">
+                            <p:calendar value="#{homeFace.ediOut}" placeholder="#{homeFace.ediElement.dateOutEdit}" size="10" class="btnDefault" autocomplete="off" />
+                        </p:panel>
+
+                        <p:panel id="editexpire" header="Days to expire" style="width: 31%; " class="editpanel">
+                            <h:outputText value="#{homeFace.ediElement.days}" />
+                        </p:panel>
+
+                        <p:panel id="editstate" header="State" style="width: 25%;" class="editpanel">
+                            <h:outputText value="#{homeFace.ediElement.state}" />
+                        </p:panel>
+
+                        <p:panel id="edittags" header="Tags" style="width: 70%;" class="editpanel">
+                            <h:outputText value="#{homeFace.ediElement.tags}" />
+                        </p:panel>
+                    </div>
+                    <p:commandButton id="update" oncomplete="PF('dlg1').show()" update="#{prop.updateTable},:form:myDialog" style="float:right;background-color:#A4BBC2 !important;box-shadow: none !important;" value="Update" actionListener="#{homeFace.updateSingle(homeFace.ediElement)}" />
                 </p:tab>
                 <p:tab title="User profile">
                     <div style="display:flex; flex-flow: row wrap; justify-content: space-around;padding-top: 20px;">
                         <p:panel id="userphoto" class="editpanel" style="width:28%;">
-                            <h:graphicImage library="images" name="#{homeFace.userProfile.avatar}.png" rendered="#{homeFace.userProfile ne null}"/>
+                            <h:graphicImage alt="Profile image" library="images" name="#{homeFace.userProfile.avatar}.png" rendered="#{homeFace.userProfile ne null}"/>
                         </p:panel>
                         <div style="width:68%;display:flex;flex-flow: row wrap;">
                             <p:panel id="nme22" header="Name" class="editpanel">
@@ -65,6 +95,7 @@
                             <p:panel id="useremail" header="Departament" class="editpanel" style="width: 45%;">
                                 <h:outputText value="#{homeFace.userProfile.mail}" />
                             </p:panel>
+                            
                             <p:panel id="userage" header="Edad" class="editpanel" style="width: 45%;">
                                 <h:outputText value="#{homeFace.userProfile.edad}" />
                             </p:panel>
@@ -72,7 +103,6 @@
                     </div>
                 </p:tab>
             </p:tabView>
-
         </p:dialog>
     </ui:composition>
 </html>

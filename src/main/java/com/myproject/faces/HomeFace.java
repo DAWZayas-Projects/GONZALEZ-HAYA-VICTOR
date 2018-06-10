@@ -14,7 +14,9 @@ import org.bson.Document;
 import com.myproject.classes.Single;
 import com.myproject.classes.User;
 import com.myproject.db.Home;
+import com.myproject.enumerate.ClientsEnum;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Date;
 import javax.ejb.Stateless;
@@ -26,7 +28,11 @@ import javax.faces.context.FacesContext;
 @Named
 @Stateless
 public class HomeFace implements Serializable {
-
+    //Edited
+    private String editext;
+    private Date ediIn;
+    private Date ediOut;
+      
     //Add Sction
     private String uid;
     private String username;
@@ -37,13 +43,15 @@ public class HomeFace implements Serializable {
     private Date calendarOut;
 
     private List<String> selectedTags;
-    private List<String> tags = new ArrayList();;
+    private List<String> tags = new ArrayList();
+    ;
 
     //Lists
     private List homeL = new ArrayList();
     private FindIterable<Document> docs;
 
     private List<Single> selectedElements;
+    private List<String> clients;
     private Single selectedElement;
 
     private List manyPids;
@@ -68,12 +76,13 @@ public class HomeFace implements Serializable {
     private User userProfile;
 
     public void init() {
-        
+
         fillTags();
+        fillCompanies();
         setHomeListElements();
         selectedElements = null;
     }
- 
+
     public List getHomeList() {
         if (filtered) {
             setHomeListElements();
@@ -246,22 +255,29 @@ public class HomeFace implements Serializable {
     }
 
     public void setEdiElement(Single ediElement) {
+        System.out.println(ediElement);
+        setEditext(ediElement.getText());
+        setEdiIn(ediElement.getDateFrom());
+        setEdiOut(ediElement.getDateTo());
+        
+        
         setUserProfile(ediElement.getId());
         this.ediElement = ediElement;
     }
-    
-    public void setUserProfile(String uid){
+
+    public void setUserProfile(String uid) {
         try {
             Home hu = new Home();
             userProfile = new User(hu.getUserName(uid));
+            System.out.println(userProfile);
             hu.closeMongo();
-            
+
         } catch (MongoTimeoutException e) {
             System.err.println("**VDEx**" + e);
         }
     }
-    
-    public User getUserProfile(){
+
+    public User getUserProfile() {
         return userProfile;
     }
 
@@ -274,6 +290,31 @@ public class HomeFace implements Serializable {
             setHomeListElements();
         } else {
             addMessage("Delete", "No se ha podido eliminar.");
+        }
+    }
+    
+    public void updateSingle(Single obj) {
+        System.out.println("YOUU" + obj + "EDITEXT=" + this.editext);
+        
+        if(this.editext != null)
+            obj.setText(this.editext);
+        
+        if(this.ediIn != null)
+            obj.setDateIn(this.ediIn);
+        
+        if(this.ediOut != null)
+            obj.setDateOut(this.ediOut);
+        
+   
+        boolean updateconfirm;
+        updateconfirm = newHome().updateSingle(obj);
+        System.out.println("UPDATERETURN" + updateconfirm);
+        if (updateconfirm) {
+            addMessage("Update", "Modificado con éxito.");
+            filtered = true;
+            setHomeListElements();
+        } else {
+            addMessage("Update", "No se ha podido modificar.");
         }
     }
 
@@ -365,8 +406,8 @@ public class HomeFace implements Serializable {
         if (calendarIn != null && calendarOut != null && texto != null && !texto.equals("")) {
             System.out.println("added");
             Home home = new Home();
-            Document doc = new Document("userId", "5ab4212db797ad40c44fd145")
-                    .append("userName", "maria")
+            Document doc = new Document("userId", "5ab430a11d2280117c0cee79")
+                    .append("userName", "ivan")
                     .append("departament", departament)
                     .append("description", texto)
                     .append("state", state)
@@ -464,9 +505,8 @@ public class HomeFace implements Serializable {
     public void setTags(List<String> tags) {
         this.tags = tags;
     }
-    
-    
-    public void fillTags(){
+
+    public void fillTags() {
         tags.clear();
         tags.add("HTML");
         tags.add("Firefox");
@@ -474,7 +514,37 @@ public class HomeFace implements Serializable {
         tags.add("React");
         tags.add("Vue");
     }
-    
-    // Add Section
 
+    public void fillCompanies() {
+        
+    }
+    
+    public String getEditext() {
+        return editext;
+    }
+
+    public void setEditext(String editext) {
+        this.editext = editext;
+    }
+
+    public Date getEdiIn() {
+        return ediIn;
+    }
+
+    public void setEdiIn(Date ediIn) {
+        this.ediIn = ediIn;
+    }
+
+    public Date getEdiOut() {
+        return ediOut;
+    }
+
+    public void setEdiOut(Date ediOut) {
+        this.ediOut = ediOut;
+    }
+    
+    
+    
+    
+    
 }

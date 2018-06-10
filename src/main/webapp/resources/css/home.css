@@ -20,7 +20,13 @@ and open the template in the editor.
 }
 
 .overLPanel{
-    margin-left: -5px !important;padding:0px !important;margin:0px !important;border:none !important;
+    margin-left: -5px !important;
+    padding:0px !important;
+    margin:0px !important;
+    border:none !important;
+    background-color:white !important;
+    box-shadow: none !important;
+    height:55px !important;
 }
 
 .stateButton{
@@ -616,4 +622,25 @@ background: none #C68570 !important;*/
 
 .ui-datepicker .ui-datepicker-title{
     text-shadow:none !important;
+}
+
+
+.ui-dialog .ui-dialog-title{
+    text-shadow:none !important;
+}
+
+.textbox{
+    box-shadow: none !important;
+    padding:10px !important;
+}
+
+.overlaystate{
+    width:100%;
+    height:35px;
+    border:none !important;
+    box-shadow: none !important;
+    border-radius:0 !important;
+    padding:0 !important;
+    margin:0 !important;
+    background-color:transparent !important;
 }
