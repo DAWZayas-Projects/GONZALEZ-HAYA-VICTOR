@@ -28,11 +28,12 @@ import javax.faces.context.FacesContext;
 @Named
 @Stateless
 public class HomeFace implements Serializable {
+
     //Edited
     private String editext;
     private Date ediIn;
     private Date ediOut;
-      
+
     //Add Sction
     private String uid;
     private String username;
@@ -44,7 +45,6 @@ public class HomeFace implements Serializable {
 
     private List<String> selectedTags;
     private List<String> tags = new ArrayList();
-    ;
 
     //Lists
     private List homeL = new ArrayList();
@@ -68,6 +68,12 @@ public class HomeFace implements Serializable {
     //Pagination
     private int nelements = 20;
     private int skiper = 0;
+
+    private int pagfrom = 1;
+    private int pagto = 10;
+
+    private boolean pagleft = false;
+    private boolean pagright = false;
 
     private long results = 0;
     private List<Integer> paginationTable;
@@ -140,6 +146,8 @@ public class HomeFace implements Serializable {
     public void setResetList(boolean bol) {
         resetAddForm();
         filtered = false;
+        pagfrom = 1;
+        pagto = 10;
         init();
     }
 
@@ -166,18 +174,54 @@ public class HomeFace implements Serializable {
 
     public List getPaginationTable() {
         List<Integer> li = new ArrayList();
-        int page = 10;
-        if (getResultsPagination() > 10) {
-            for (int i = 1; i <= page; i++) {
+
+        if (getResultsPagination() > pagto) {
+            for (int i = pagfrom; i <= pagto; i++) {
                 li.add(i);
             }
+            displayPagination();
         } else {
-            for (int i = 1; i <= getResultsPagination(); i++) {
+            for (int i = pagfrom; i <= getResultsPagination(); i++) {
                 li.add(i);
             }
+            displayPagination();
         }
 
         return li;
+    }
+
+    public void displayPagination() {
+        if (pagfrom == 1 && getResultsPagination() > pagto) {
+            pagleft = false;
+            pagright = true;
+        } else if (pagfrom == 1 && getResultsPagination() <= pagto) {
+            pagleft = false;
+            pagright = false;
+        }
+        
+        if (pagfrom > 1 && getResultsPagination() > pagto) {
+            pagleft = true;
+            pagright = true;
+        } else if (pagfrom > 1 && getResultsPagination() <= pagto) {
+            pagleft = true;
+            pagright = false;
+        }
+        
+        
+    }
+
+    public void setMorePages() {
+        pagfrom += 10;
+        pagto += 10;
+        System.out.println(pagfrom + "//" + pagto);
+        getPaginationTable();
+    }
+
+    public void setLessPages() {
+        pagfrom -= 10;
+        pagto -= 10;
+        System.out.println(pagfrom + "//" + pagto);
+        getPaginationTable();
     }
 
     public void setPaginationTable(List<Integer> paginationTable) {
@@ -259,8 +303,7 @@ public class HomeFace implements Serializable {
         setEditext(ediElement.getText());
         setEdiIn(ediElement.getDateFrom());
         setEdiOut(ediElement.getDateTo());
-        
-        
+
         setUserProfile(ediElement.getId());
         this.ediElement = ediElement;
     }
@@ -292,20 +335,22 @@ public class HomeFace implements Serializable {
             addMessage("Delete", "No se ha podido eliminar.");
         }
     }
-    
+
     public void updateSingle(Single obj) {
         System.out.println("YOUU" + obj + "EDITEXT=" + this.editext);
-        
-        if(this.editext != null)
+
+        if (this.editext != null) {
             obj.setText(this.editext);
-        
-        if(this.ediIn != null)
+        }
+
+        if (this.ediIn != null) {
             obj.setDateIn(this.ediIn);
-        
-        if(this.ediOut != null)
+        }
+
+        if (this.ediOut != null) {
             obj.setDateOut(this.ediOut);
-        
-   
+        }
+
         boolean updateconfirm;
         updateconfirm = newHome().updateSingle(obj);
         System.out.println("UPDATERETURN" + updateconfirm);
@@ -516,9 +561,9 @@ public class HomeFace implements Serializable {
     }
 
     public void fillCompanies() {
-        
+
     }
-    
+
     public String getEditext() {
         return editext;
     }
@@ -542,9 +587,21 @@ public class HomeFace implements Serializable {
     public void setEdiOut(Date ediOut) {
         this.ediOut = ediOut;
     }
-    
-    
-    
-    
-    
+
+    public boolean isPagleft() {
+        return pagleft;
+    }
+
+    public void setPagleft(boolean pagleft) {
+        this.pagleft = pagleft;
+    }
+
+    public boolean isPagright() {
+        return pagright;
+    }
+
+    public void setPagright(boolean pagright) {
+        this.pagright = pagright;
+    }
+
 }

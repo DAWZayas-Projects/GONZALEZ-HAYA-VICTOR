@@ -11,8 +11,8 @@
         <p:column headerText="#{prop.pid}" width="300" visible="false">
             <h:outputText value="#{item.pid}" />
         </p:column>
-        <p:column headerText="" width="3" sortBy="#{item.departament}">
-            <h:graphicImage alt="Client image" library="images" name="#{item.departament}.png" style="max-height:20px;max-width:40px;margin-right:10px;"/>
+        <p:column headerText="" width="1" sortBy="#{item.departament}" >
+            <h:graphicImage alt="Client image" library="images" name="#{item.departament}.png" style="display:block;margin:auto;max-height:20px;max-width:38px;"/>
             <!-- <h:outputText value="#{item.departament}" /> -->
         </p:column>
         
@@ -37,12 +37,12 @@
             <h:outputText value="#{item.days}" style="#{item.days lt 0 ? 'color:red;' : ''}" />
         </p:column>
         
-        <p:column headerText="" width="10" sortBy="#{item.userName}">
+        <p:column headerText="" width="7" sortBy="#{item.userName}">
             <h:graphicImage alt="Profile image" library="images" name="#{item.avatar}.png" style="width:20px;margin-right:10px;"/>
             <!--  <h:outputText value="#{item.userName}" /> -->
           </p:column>
         
-        <p:column headerText="" width="40" class="#{item.state}" style="padding:0 !important;margin:0 !important;" >
+        <p:column headerText="" width="32" class="#{item.state}" style="padding:0 !important;margin:0 !important;" >
             <h:outputText />
             <p:commandButton id="xyz" value="" class="overlaystate" />
             <p:overlayPanel id="statebtns" for="xyz" class="overLPanel" hideEffect="fade">

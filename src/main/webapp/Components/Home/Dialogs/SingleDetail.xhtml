@@ -15,8 +15,8 @@
                         <p:panel id="nme" header="Name" class="editpanel" style="width:45%; float: left;">
                             <h:graphicImage alt="Profile image" library="images" name="#{homeFace.userProfile.avatar}.png" rendered="#{homeFace.userProfile ne null}" style="width: 20px;margin-right: 10px;"/><h:outputText value="#{homeFace.ediElement.userName}" />
                         </p:panel>
-                        <p:panel id="finance" header="Departament" class="editpanel" style="width:45%;">
-                            <h:outputText value="#{homeFace.ediElement.departament}" />
+                        <p:panel id="finance" header="#{prop.departament}" class="editpanel" style="width:45%;">
+                            <h:graphicImage alt="Client image" library="images" name="#{homeFace.ediElement.departament}.png" rendered="#{homeFace.userProfile ne null}" style="width: 50px;margin-right: 10px;"/>
                         </p:panel>
 
                         <p:panel id="desc" header="Description" class="editpanel" style="">
@@ -53,8 +53,9 @@
                             <h:graphicImage alt="Profile image" library="images" name="#{homeFace.userProfile.avatar}.png" rendered="#{homeFace.userProfile ne null}" style="width: 20px;margin-right: 10px;"/><h:outputText value="#{homeFace.ediElement.userName}" />
                         </p:panel>
 
-                        <p:panel id="editfinance" header="Departament" class="editpanel" style="width:45%;">
-                            <h:outputText value="#{homeFace.ediElement.departament}" />
+                        <p:panel id="editfinance" header="#{prop.departament}" class="editpanel" style="width:45%;">
+                            <!-- <h:outputText value="#{homeFace.ediElement.departament}" /> -->
+                            <h:graphicImage alt="Client image" library="images" name="#{homeFace.ediElement.departament}.png" rendered="#{homeFace.userProfile ne null}" style="width: 50px;margin-right: 10px;"/>
                         </p:panel>
     
                         <p:panel id="editdesc22" header="Description" class="editpanel" style="">
@@ -81,7 +82,7 @@
                             <h:outputText value="#{homeFace.ediElement.tags}" />
                         </p:panel>
                     </div>
-                    <p:commandButton id="update" oncomplete="PF('dlg1').show()" update="#{prop.updateTable},:form:myDialog" style="float:right;background-color:#A4BBC2 !important;box-shadow: none !important;" value="Update" actionListener="#{homeFace.updateSingle(homeFace.ediElement)}" />
+                    <p:commandButton id="update" oncomplete="PF('dlg1').show()" update="#{prop.updateTable},:form:myDialog,:form:message" style="float:right;background-color:#A4BBC2 !important;box-shadow: none !important;" value="Update" actionListener="#{homeFace.updateSingle(homeFace.ediElement)}" />
                 </p:tab>
                 <p:tab title="User profile">
                     <div style="display:flex; flex-flow: row wrap; justify-content: space-around;padding-top: 20px;">
