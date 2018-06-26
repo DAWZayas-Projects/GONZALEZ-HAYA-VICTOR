@@ -24,6 +24,7 @@ import org.bson.types.ObjectId;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 @Named
 @Stateless
@@ -60,7 +61,7 @@ public class HomeFace implements Serializable {
 
     //Search
     private boolean filtered = false;
-    private String textFilter;
+    private String textFilter = "";
     private String textFilterType = "userName";
     private Date searchEnd;
     private Date searchStart;
@@ -77,10 +78,15 @@ public class HomeFace implements Serializable {
 
     private long results = 0;
     private List<Integer> paginationTable;
-
+    
+    
+    //Edi element and userprofile
     private Single ediElement;
     private User userProfile;
-
+    
+    public HomeFace(){}
+    
+    @Inject
     public void init() {
 
         fillTags();
@@ -105,14 +111,16 @@ public class HomeFace implements Serializable {
         filtered = true;
         setHomeListElements();
     }
-
+    
     public void setHomeListElements() {
         this.homeL.clear();
+        System.out.println("FILTERSTATE=>" + filtered);
         try {
-
+            
             Home h = new Home();
-            docs = h.homeList(filtered, textFilter, textFilterType, searchStart, searchEnd, skiper, nelements);
+            docs = h.homeList(searchInfo());
             results = h.getTotalresults();
+            searchInfo();
 
             for (Document doc : docs) {
                 Document userinfo = h.getUserName(doc.getString("userId"));
@@ -137,6 +145,18 @@ public class HomeFace implements Serializable {
         }
 
         filtered = false;
+    }
+    
+    public Document searchInfo(){
+        Document doc = new Document();
+        doc.append("isFiltered", filtered)
+           .append("textFilter", textFilter)
+           .append("filterKey", textFilterType)
+           .append("dateFrom", searchStart)
+           .append("dateTo", searchEnd)
+           .append("skiper", skiper)
+           .append("limiter", nelements);
+        return doc;
     }
 
     public void setTableState() {
@@ -213,14 +233,12 @@ public class HomeFace implements Serializable {
     public void setMorePages() {
         pagfrom += 10;
         pagto += 10;
-        System.out.println(pagfrom + "//" + pagto);
         getPaginationTable();
     }
 
     public void setLessPages() {
         pagfrom -= 10;
         pagto -= 10;
-        System.out.println(pagfrom + "//" + pagto);
         getPaginationTable();
     }
 

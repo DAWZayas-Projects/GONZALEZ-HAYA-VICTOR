@@ -1,2 +1,2 @@
 # JavaEE-app
-Maven, JSF, Primefaces, MongoDB &amp; Jenkins
+Maven, JSF, Primefaces, MongoDB

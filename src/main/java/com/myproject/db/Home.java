@@ -9,52 +9,66 @@ import com.mongodb.client.model.Sorts;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import com.myproject.classes.Single;
-import com.myproject.faces.HomeFace;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
 public class Home extends MongoConnection {
 
-    public FindIterable<Document> homeList(boolean defaultt, String filter, String filtertype, Date searchstart, Date searchend, int skiper, int limiter) throws MongoException {
+    public FindIterable<Document> homeList(Document docfilter) throws MongoException {
         FindIterable<Document> docs = null;
 
-        if (!defaultt) {
+        if (!docfilter.getBoolean("isFiltered")) {
             setTotalresults(getHomeCol().count());
-            docs = getHomeCol().find().skip(skiper).limit(limiter).sort(Sorts.ascending("dateOut"));
+            docs = getHomeCol().find().skip(docfilter.getInteger("skiper")).limit(docfilter.getInteger("limiter")).sort(Sorts.ascending("dateOut"));
         } else {
-            docs = homeListFiltered(filter, filtertype, searchstart, searchend, skiper, limiter);
+            docs = homeListFiltered(docfilter);
         }
 
         return docs;
     }
+    
+    public Document getUserName(String userid) {
+        Document userInfo = database.getCollection("users").find(eq("_id", new ObjectId(userid))).first();
+        return userInfo;
+    }
+    
+    public FindIterable<Document> getUsers() {
+        FindIterable<Document> users = database.getCollection("users").find();
+        return users;
+    }
 
-    public FindIterable<Document> homeListFiltered(String nameFilter, String filtertype, Date searchstart, Date searchend, int skiper, int limiter) {
+    public FindIterable<Document> homeListFiltered(Document searchfilter) {
 
         Document doc = null;
         FindIterable<Document> f;
 
-        if (searchend != null) {
+        if (searchfilter.getDate("dateTo") != null) {
 
-            if (searchstart != null) {
-                doc = new Document("dateOut", new Document("$lte", searchend).append("$gte", searchstart));
+            if (searchfilter.getDate("dateFrom") != null) {
+                doc = new Document("dateOut", new Document("$lte", searchfilter.getDate("dateTo")).append("$gte", searchfilter.getDate("dateFrom")));
             } else {
-                doc = new Document("dateOut", searchend);
+                doc = new Document("dateOut", searchfilter.getDate("dateTo"));
             }
 
-            return ifTextEmpty(doc, filtertype, nameFilter, skiper,limiter);
+            return ifTextEmpty(doc, searchfilter.getString("filterKey"), searchfilter.getString("textFilter"), searchfilter.getInteger("skiper"),searchfilter.getInteger("limiter"));
 
-        } else if (searchend == null && searchstart != null) {
+        } else if (searchfilter.getDate("dateTo") == null && searchfilter.getDate("dateFrom") != null) {
 
-            return ifTextEmpty(new Document("dateOut", searchstart), filtertype, nameFilter, skiper, limiter);
+            return ifTextEmpty(new Document("dateOut", searchfilter.getDate("dateFrom")), searchfilter.getString("filterKey"), searchfilter.getString("textFilter"), searchfilter.getInteger("skiper"), searchfilter.getInteger("limiter"));
 
         } else {
-            setTotalresults(getHomeCol().count(Filters.regex(filtertype, nameFilter, "i")));
-            return getHomeCol().find(Filters.regex(filtertype, nameFilter, "i")).skip(skiper).limit(limiter).sort(Sorts.ascending("dateOut"));
+            System.out.println("DEFAULTEMPTYQUERY");
+            setTotalresults(getHomeCol().count(Filters.regex(searchfilter.getString("filterKey"), searchfilter.getString("textFilter"), "i")));
+            return getHomeCol()
+                    .find(Filters.regex(searchfilter.getString("filterKey"), searchfilter.getString("textFilter"), "i"))
+                    .skip(searchfilter.getInteger("skiper"))
+                    .limit(searchfilter.getInteger("limiter"))
+                    .sort(Sorts.ascending("dateOut"));
+                    //.modifiers(new Document("$hint","textIndex"));
+            
         }
-
     }
 
     public FindIterable<Document> ifTextEmpty(Document doc, String filtertype, String nameFilter,int skiper,int limiter) {
@@ -72,7 +86,7 @@ public class Home extends MongoConnection {
 
     public FindIterable<Document> returnDateSimple(Document doc,int skip,int limit) {
         setTotalresults(getHomeCol().count(doc));
-        return getHomeCol().find(doc).skip(skip).limit(limit).sort(Sorts.ascending("dateOut"));
+        return getHomeCol().find(doc).skip(skip).limit(limit).sort(Sorts.ascending("dateOut")).modifiers(new Document("$hint","datIndex"));
     }
 
     public MongoCollection<Document> getHomeCol() {
@@ -168,16 +182,5 @@ public class Home extends MongoConnection {
         deleteMany(manyElements);
         
         return true;
-    }
-
-    public Document getUserName(String userid) {
-        Document userInfo = database.getCollection("users").find(eq("_id", new ObjectId(userid))).first();
-        return userInfo;
-    }
-    
-    public FindIterable<Document> getUsers() {
-        FindIterable<Document> users = database.getCollection("users").find();
-        return users;
-    }
-
+    } 
 }

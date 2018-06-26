@@ -11,7 +11,7 @@ public class MongoConnection {
             .Builder()
             .serverSelectionTimeout(5000)
             //.maxConnectionLifeTime(3000)
-            .connectionsPerHost(10)
+            //.connectionsPerHost(10)
             .build();
     MongoClient mongo = new MongoClient(new ServerAddress("localhost", 27017), mongoClientOptions);
     MongoDatabase database = mongo.getDatabase("newdb");
